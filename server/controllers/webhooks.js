@@ -9,58 +9,60 @@ import Course from "../models/Course.js";
 // API Controller Function to Manage Clerk User with database
 export const clerkWebhooks = async (req, res) => {
   try {
-
-    // Create a Svix instance with clerk webhook secret.
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
 
-    // Verifying Headers
     await whook.verify(JSON.stringify(req.body), {
       "svix-id": req.headers["svix-id"],
       "svix-timestamp": req.headers["svix-timestamp"],
       "svix-signature": req.headers["svix-signature"]
     })
 
-    // Getting Data from request body
     const { data, type } = req.body
 
-    // Switch Cases for differernt Events
     switch (type) {
       case 'user.created': {
+        // Safety Check: If email_addresses exists, take the first one. Otherwise, use a placeholder.
+        const userEmail = data.email_addresses && data.email_addresses.length > 0 
+                          ? data.email_addresses[0].email_address 
+                          : "";
 
         const userData = {
           _id: data.id,
-          email: data.email_addresses[0].email_address,
-          name: data.first_name + " " + data.last_name,
+          email: userEmail,
+          name: `${data.first_name || ""} ${data.last_name || ""}`.trim(),
           imageUrl: data.image_url,
           resume: ''
         }
         await User.create(userData)
-        res.json({})
-        break;
+        return res.json({ success: true, message: "User Created" }) // Added success message
       }
 
       case 'user.updated': {
+        const userEmail = data.email_addresses && data.email_addresses.length > 0 
+                          ? data.email_addresses[0].email_address 
+                          : "";
+
         const userData = {
-          email: data.email_addresses[0].email_address,
-          name: data.first_name + " " + data.last_name,
+          email: userEmail,
+          name: `${data.first_name || ""} ${data.last_name || ""}`.trim(),
           imageUrl: data.image_url,
         }
         await User.findByIdAndUpdate(data.id, userData)
-        res.json({})
-        break;
+        return res.json({ success: true, message: "User Updated" })
       }
 
       case 'user.deleted': {
         await User.findByIdAndDelete(data.id)
-        res.json({})
-        break;
+        return res.json({ success: true, message: "User Deleted" })
       }
       default:
-        break;
+        return res.json({ success: true })
     }
 
   } catch (error) {
-    res.json({ success: false, message: error.message })
+    // If there is an error, we send a 500 status so Clerk knows it failed
+    console.log("Webhook Error:", error.message)
+    return res.status(500).json({ success: false, message: error.message })
   }
 }
 
