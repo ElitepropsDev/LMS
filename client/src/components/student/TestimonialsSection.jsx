@@ -1,43 +1,89 @@
 import React from 'react';
-import { assets, dummyTestimonial } from '../../assets/assets';
+import { assets } from '../../assets/assets';
 
 const TestimonialsSection = () => {
+  const nigerianTestimonials = [
+    {
+      name: "Olawale Adeyemi",
+      role: "SS3 Student, Oyo State",
+      // High-quality African male portrait
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&h=200&q=80", 
+      rating: 5,
+      feedback: "The offline feature is a lifesaver. I download lessons at the cyber café in town and watch them at night when there is no light in our village. My Math score improved from 40% to 85%!"
+    },
+    {
+  name: "Chiamaka Okoro",
+  role: "JAMB Candidate, Enugu",
+  // Updated reliable high-quality portrait
+  image: "https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&w=200&h=200&q=80", 
+  rating: 5,
+  feedback: "I was worried about data costs, but the data-saving mode is real. I used just a small bundle to get all my Physics revision videos. I feel so ready for my exams now!"
+},
+    {
+      name: "Musa Ibrahim",
+      role: "WAEC Student, Kano",
+      // High-quality African male portrait
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80",
+      rating: 5,
+      feedback: "Even without a steady network in my area, I can still learn. The teachers explain things so simply, just like having a private tutor right here with me."
+    }
+  ];
 
   return (
-    <div className="pb-14 px-8 md:px-0">
-      <h2 className="text-3xl font-medium text-gray-800">Testimonials</h2>
-      <p className="md:text-base text-gray-500 mt-3">
-        Hear from our learners as they share their journeys of transformation, success, and how our <br /> platform has made a difference in their lives.
-      </p>
-      <div className="grid grid-cols-auto gap-8 mt-14">
-        {dummyTestimonial.map((testimonial, index) => (
+    <div className="pt-0 pb-16 px-8 md:px-0 -mt-20 md:mt-0 max-w-6xl mx-auto">
+      <div className="text-center md:text-left mb-10">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">Success Stories from Nigeria</h2>
+        <p className="md:text-base text-gray-500 mt-2 max-w-2xl">
+          From the village to the university—see how our students are breaking barriers.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {nigerianTestimonials.map((testimonial, index) => (
           <div
             key={index}
-            className="text-sm text-left  border border-gray-500/30 pb-6 rounded-lg bg-white shadow-[0px_4px_15px_0px] shadow-black/5 overflow-hidden"
+            className="group relative text-sm text-left border border-gray-100 pb-8 rounded-3xl bg-white shadow-sm hover:shadow-lg transition-all duration-300"
           >
-            <div className="flex items-center gap-4 px-5 py-4 bg-gray-500/10">
-              <img className="h-12 w-12 rounded-full" src={testimonial.image} alt={testimonial.name} />
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-blue-600 rounded-t-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+            <div className="flex items-center gap-4 px-6 py-5">
+              <div className="relative flex-shrink-0">
+                <img 
+                  className="h-14 w-14 rounded-full object-cover border-2 border-blue-50 shadow-sm" 
+                  src={testimonial.image} 
+                  alt={testimonial.name} 
+                />
+                <div className="absolute -bottom-0.5 -right-0.5 bg-green-500 w-3.5 h-3.5 rounded-full border-2 border-white"></div>
+              </div>
               <div>
-                <h1 className="text-lg font-medium text-gray-800">{testimonial.name}</h1>
-                <p className="text-gray-800/80">{testimonial.role}</p>
+                <h3 className="text-base font-bold text-gray-800 leading-none">{testimonial.name}</h3>
+                <p className="text-blue-600 font-semibold text-[10px] uppercase mt-1.5 tracking-wide">{testimonial.role}</p>
               </div>
             </div>
-            <div className="p-5 pb-7">
-              <div className="flex gap-0.5">
+
+            <div className="px-6">
+              <div className="flex gap-0.5 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <img
-                    className="h-5"
+                    className="h-3"
                     key={i}
-                    src={i < Math.floor(testimonial.rating) ? assets.star : assets.star_blank}
+                    src={i < testimonial.rating ? assets.star : assets.star_blank}
                     alt="star"
                   />
                 ))}
               </div>
-              <p className="text-gray-500 mt-5">{testimonial.feedback}</p>
+
+              <p className="text-gray-600 leading-relaxed italic text-[13px]">
+                "{testimonial.feedback}"
+              </p>
+              
+              <div className="mt-6 flex items-center justify-between border-t border-gray-50 pt-4">
+                 <button className="text-blue-600 font-bold text-[11px] hover:underline flex items-center gap-1">
+                   View Result <span>→</span>
+                 </button>
+                 <span className="text-[10px] text-gray-400 font-medium bg-gray-50 px-2.5 py-1 rounded-lg">Verified Learner</span>
+              </div>
             </div>
-            <a href="#" className="text-blue-500 underline px-5">
-              Read more
-            </a>
           </div>
         ))}
       </div>

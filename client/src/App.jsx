@@ -1,24 +1,30 @@
-import React, { useContext } from 'react'
-import { Routes, Route, useLocation, useMatch } from 'react-router-dom'
-import Navbar from './components/student/Navbar'
-import Home from './pages/student/Home'
-import CourseDetails from './pages/student/CourseDetails'
-import CoursesList from './pages/student/CoursesList'
-import Dashboard from './pages/educator/Dashboard'
-import AddCourse from './pages/educator/AddCourse'
-import MyCourses from './pages/educator/MyCourses'
-import StudentsEnrolled from './pages/educator/StudentsEnrolled'
-import Educator from './pages/educator/Educator'
-import 'quill/dist/quill.snow.css'
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify'
-import Player from './pages/student/Player'
-import MyEnrollments from './pages/student/MyEnrollments'
-import Loading from './components/student/Loading'
+import React, { useContext } from "react";
+import { Routes, Route, useLocation, useMatch } from "react-router-dom";
+import Navbar from "./components/student/Navbar";
+import Home from "./pages/student/Home";
+import CourseDetails from "./pages/student/CourseDetails";
+import CoursesList from "./pages/student/CoursesList";
+import Dashboard from "./pages/educator/Dashboard";
+import AddCourse from "./pages/educator/AddCourse";
+import MyCourses from "./pages/educator/MyCourses";
+import StudentsEnrolled from "./pages/educator/StudentsEnrolled";
+import Educator from "./pages/educator/Educator";
+import "quill/dist/quill.snow.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import Player from "./pages/student/Player";
+import MyEnrollments from "./pages/student/MyEnrollments";
+import Loading from "./components/student/Loading";
+import ProgramPreview from "./components/student/ProgramPreview";
+import FeatureHighlights from "./components/student/FeatureHighlights";
+import UpcomingSessions from "./components/student/UpcomingSessions";
+import OfflineFeatures from "./components/student/OfflineFeatures";
+import ProgressTracking from "./components/student/ProgressTracking";
+import PricingTrust from "./components/student/PricingTrust"
+
 
 const App = () => {
-
-  const isEducatorRoute = useMatch('/educator/*');
+  const isEducatorRoute = useMatch("/educator/*");
 
   return (
     <div className="text-default min-h-screen bg-white">
@@ -33,15 +39,23 @@ const App = () => {
         <Route path="/my-enrollments" element={<MyEnrollments />} />
         <Route path="/player/:courseId" element={<Player />} />
         <Route path="/loading/:path" element={<Loading />} />
-        <Route path='/educator' element={<Educator />}>
-          <Route path='/educator' element={<Dashboard />} />
-          <Route path='add-course' element={<AddCourse />} />
-          <Route path='my-courses' element={<MyCourses />} />
-          <Route path='student-enrolled' element={<StudentsEnrolled />} />
+        <Route path="/program-preview" element={<ProgramPreview/>} />
+        <Route path="/feature-highlights" element={<FeatureHighlights/>} />
+        <Route path="/upcomingsessions" element={<UpcomingSessions/>} />
+        <Route path="/offline-features" element={<OfflineFeatures/>} />
+        <Route path="/progress-tracking" element={<ProgressTracking/>} />
+        <Route path="/pricing-trust" element={<PricingTrust/>} />
+
+
+        <Route path="/educator" element={<Educator />}>
+          <Route path="/educator" element={<Dashboard />} />
+          <Route path="add-course" element={<AddCourse />} />
+          <Route path="my-courses" element={<MyCourses />} />
+          <Route path="student-enrolled" element={<StudentsEnrolled />} />
         </Route>
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
