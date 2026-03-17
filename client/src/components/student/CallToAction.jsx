@@ -41,7 +41,7 @@ const CallToAction = () => {
           <div className='mt-10 pt-10 border-t border-white/20 w-full flex flex-wrap justify-center gap-8 text-white/80 text-xs md:text-sm font-bold'>
              <div className='flex items-center gap-2'>
                 <span className='w-2 h-2 bg-green-400 rounded-full animate-ping'></span>
-                Over 12,000 Students Online Now
+                Over 5,000 Students Online Now
              </div>
              <div>• USSD Payment Enabled</div>
              <div>• Parents' Dashboard Included</div>
