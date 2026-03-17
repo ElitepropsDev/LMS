@@ -50,7 +50,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-slate-200 py-8">
         <p className="text-center text-xs md:text-sm text-slate-400 font-medium">
-          Copyright 2026 © YourAppName. <br className="md:hidden" /> Empowering Rural Nigerian Excellence.
+          Copyright 2026 © Excel Career Plus. <br className="md:hidden" /> Empowering Rural Nigerian Excellence.
         </p>
       </div>
     </footer>
