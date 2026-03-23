@@ -21,6 +21,8 @@ import UpcomingSessions from "./components/student/UpcomingSessions";
 import OfflineFeatures from "./components/student/OfflineFeatures";
 import ProgressTracking from "./components/student/ProgressTracking";
 import PricingTrust from "./components/student/PricingTrust"
+import Dashbord from "./pages/student/Dashboard";
+import JambExam from "./components/student/JambExam";
 
 
 const App = () => {
@@ -45,6 +47,8 @@ const App = () => {
         <Route path="/offline-features" element={<OfflineFeatures/>} />
         <Route path="/progress-tracking" element={<ProgressTracking/>} />
         <Route path="/pricing-trust" element={<PricingTrust/>} />
+        <Route path="/dashboard" element={<Dashbord/>} />
+        <Route path="/jambexam" element={<JambExam/>} />
 
 
         <Route path="/educator" element={<Educator />}>
