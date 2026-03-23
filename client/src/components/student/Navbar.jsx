@@ -9,23 +9,18 @@ import axios from 'axios';
 const Navbar = () => {
 
   const location = useLocation();
-
   const isCoursesListPage = location.pathname.includes('/course-list');
-
   const { backendUrl, isEducator, setIsEducator, navigate, getToken } = useContext(AppContext)
 
   const { openSignIn } = useClerk()
   const { user } = useUser()
 
   const becomeEducator = async () => {
-
     try {
-
       if (isEducator) {
         navigate('/educator')
         return;
       }
-
       const token = await getToken()
       const { data } = await axios.get(backendUrl + '/api/educator/update-role', { headers: { Authorization: `Bearer ${token}` } })
       if (data.success) {
@@ -34,7 +29,6 @@ const Navbar = () => {
       } else {
         toast.error(data.message)
       }
-
     } catch (error) {
       toast.error(error.message)
     }
@@ -42,41 +36,54 @@ const Navbar = () => {
 
   return (
     <div className={`flex items-center justify-between px-4 sm:px-10 md:px-14 lg:px-36 border-b border-gray-500 py-4 ${isCoursesListPage ? 'bg-white' : 'bg-cyan-100/70'}`}>
+      
       <img 
-  onClick={() => navigate('/')} 
-  src={assets.logo} 
-  alt="Logo" 
-  className="w-16 lg:w-20 cursor-pointer" 
-/>
-      <div className="md:flex hidden items-center gap-5 text-gray-500">
-        <div className="flex items-center gap-5">
-          {
-            user && <>
-              <button onClick={becomeEducator}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
-              | <Link to='/my-enrollments' >My Enrollments</Link>
-            </>
-          }
-        </div>
-        {user
-          ? <UserButton />
-          : <button onClick={() => openSignIn()} className="bg-blue-600 text-white px-5 py-2 rounded-full">
-            Create Account
-          </button>}
-      </div>
-      {/* For Phone Screens */}
-      <div className='md:hidden flex items-center gap-2 sm:gap-5 text-gray-500'>
-        <div className="flex items-center gap-1 sm:gap-2 max-sm:text-xs">
-          <button onClick={becomeEducator}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button>
-          | {
-            user && <Link to='/my-enrollments' >My Enrollments</Link>
-          }
-        </div>
-        {user
-          ? <UserButton />
-          : <button onClick={() => openSignIn()}>
-            <img src={assets.user_icon} alt="" />
-          </button>}
-      </div>
+        onClick={() => navigate('/')} 
+        src={assets.logo} 
+        alt="Logo" 
+        className="w-16 lg:w-20 cursor-pointer" 
+      />
+
+      {/* Desktop Navigation */}
+<div className="md:flex hidden items-center gap-5 text-gray-500">
+  <div className="flex items-center gap-5">
+    {
+      user && <>
+        {/* New Dashboard Link */}
+        <Link to='/dashboard' className='hover:text-blue-600 transition-all font-medium'>My Dashboard</Link>
+        
+        {/* HIDDEN: My Enrollments (Commented out for later use) */}
+        {/* | <Link to='/my-enrollments'>My Enrollments</Link> */}
+        
+        {/* HIDDEN: Educator Dashboard Button */}
+        {/* | <button onClick={becomeEducator}>{isEducator ? 'Educator Dashboard' : 'Become Educator'}</button> */}
+      </>
+    }
+  </div>
+  {user
+    ? <UserButton />
+    : <button onClick={() => openSignIn()} className="bg-blue-600 text-white px-5 py-2 rounded-full">
+      Create Account
+    </button>}
+</div>
+
+{/* Mobile Navigation */}
+<div className='md:hidden flex items-center gap-2 sm:gap-5 text-gray-500'>
+  <div className="flex items-center gap-1 sm:gap-2 max-sm:text-xs">
+    {
+      user && <>
+        <Link to='/dashboard'>My Dashboard</Link>
+        {/* HIDDEN: My Enrollments */}
+        {/* | <Link to='/my-enrollments'>My Enrollments</Link> */}
+      </>
+    }
+  </div>
+  {user
+    ? <UserButton />
+    : <button onClick={() => openSignIn()}>
+      <img src={assets.user_icon} alt="user_icon" />
+    </button>}
+</div>
     </div>
   );
 };
