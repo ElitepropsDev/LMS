@@ -3,19 +3,19 @@ import React from 'react';
 const OfflineFeatures = () => {
   const points = [
     {
-      title: "Download Once, Watch Anywhere",
-      desc: "Save full video lessons to your device when you have a connection, and watch them later without using any data.",
-      icon: "https://cdn-icons-png.flaticon.com/512/2989/2989976.png"
+      title: "Responsive Platform ",
+      desc: "Lessons designed to work perfectly on phones, tablets, and laptops. ",
+      icon: "https://cdn-icons-png.flaticon.com/512/3437/3437364.png"
     },
     {
-      title: "Data-Saving Mode",
-      desc: "Our platform automatically compresses videos so you can learn more while spending less on data bundles.",
-      icon: "https://cdn-icons-png.flaticon.com/512/3159/3159066.png"
+      title: "Data Friendly",
+      desc: "Our platform’s technology compresses videos to reduce data usage, so you can stream more lessons while spending less.",
+      icon: "https://cdn-icons-png.flaticon.com/512/2040/2040504.png"
     },
     {
-      title: "Lightweight Mobile App",
-      desc: "Designed to run smoothly even on older Android phones and in areas with weak 3G signals.",
-      icon: "https://cdn-icons-png.flaticon.com/512/2586/2586488.png"
+      title: "Concept-Focused Learning ",
+      desc: " Clear, easy-to-follow lessons that emphasize understanding over memorization, helping you master key concepts faster.",
+      icon: "https://cdn-icons-png.flaticon.com/512/1792/1792155.png"
     }
   ];
 
@@ -27,13 +27,13 @@ const OfflineFeatures = () => {
         {/* Left Side: Illustration/Text */}
         <div className="lg:w-1/2 text-center lg:text-left">
           <span className="bg-blue-400/30 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">
-            Offline Learning
+            Mobile-First Learning
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mt-6 leading-tight">
-            No Internet? <br /> <span className="text-blue-200">No Problem.</span>
+            Learn anywhere,  <br /> <span className="text-blue-200">Anytime.</span>
           </h2>
           <p className="text-blue-100 mt-4 text-lg leading-relaxed">
-            We built this for the rural student. Study your lessons under a tree, in the village, or during a power outage.
+            Access lessons on your phone or tablet — no heavy setup needed. Designed to run smoothly even on slower networks, so you can focus on learning.
           </p>
           
           <div className="mt-10 space-y-8">

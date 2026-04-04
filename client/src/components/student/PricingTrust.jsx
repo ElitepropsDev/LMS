@@ -12,10 +12,10 @@ const PricingTrust = () => {
         {/* Header - Reduced mb-8 to bring the cards closer to the title */}
         <div className="mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-800 tracking-tight">
-            Quality Education, <span className="text-blue-600">Priced for Everyone</span>
+            Quality Education, <span className="text-blue-600"> Accessible to Everyone</span>
           </h2>
           <p className="text-gray-500 mt-2 max-w-2xl mx-auto text-sm md:text-base">
-            We believe money shouldn't stop a brilliant mind. Our plans are designed to be cheaper than a data bundle.
+            We make pre-university learning, STEM, and digital skills easy to access for all students, so cost or location never stands in the way of progress.
           </p>
         </div>
 
@@ -27,9 +27,9 @@ const PricingTrust = () => {
             <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" className="w-7 h-7 object-contain" alt="Pay" />
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Pay as you go</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Pay-As-You-Go</h3>
             <p className="text-gray-500 text-xs leading-relaxed">
-              No monthly subscriptions. Just pay for the specific subject you need right now.
+               No subscriptions — pay only for the modules you need.
             </p>
           </div>
 
@@ -39,22 +39,22 @@ const PricingTrust = () => {
               Most Popular
             </div>
             <div className="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/1041/1041888.png" className="w-7 h-7 object-contain" alt="Voucher" />
+              <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" className="w-7 h-7 object-contain" alt="Voucher" />
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Voucher System</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Easy Payment</h3>
             <p className="text-gray-500 text-xs leading-relaxed">
-              Buy learning scratch cards from local shops. No bank account or ATM required.
+              Simple payments via bank transfer, USSD, or agent banking. 
             </p>
           </div>
 
           {/* Feature 3 */}
           <div className="p-6 md:p-8 rounded-3xl border border-gray-100 bg-gray-50/30">
             <div className="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" className="w-7 h-7 object-contain" alt="Scholarship" />
+              <img src="https://cdn-icons-png.flaticon.com/512/555/555541.png" className="w-7 h-7 object-contain" alt="Scholarship" />
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Scholarship Fund</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Discounts & Vouchers </h3>
             <p className="text-gray-500 text-xs leading-relaxed">
-              Top-performing students get 100% of their fees covered by our global partners.
+              From time to time, enjoy discounts or free vouchers for selected modules. 
             </p>
           </div>
 

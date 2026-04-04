@@ -3,22 +3,22 @@ import React from 'react';
 const ProgramPreview = () => {
   const pathways = [
     {
-      title: "International Study Abroad",
-      description: "Get ready for global opportunities. We help you transition seamlessly to top secondary schools and colleges worldwide.",
+      title: "Intro to Advanced Math Concepts for STEM",
+      description: "Master key math ideas in a clear, concept-first way, building reasoning skills and confidence for university STEM.",
       icon: "https://cdn-icons-png.flaticon.com/512/3074/3074058.png",
       color: "border-blue-400",
       bg: "bg-blue-50"
     },
     {
-      title: "WAEC & JAMB Mastery",
-      description: "Ace your senior exams with expert-led tutorials, past question banks, and interactive mock tests designed for success.",
+      title: "Digital Tools & Practical Skills",
+      description: "Exposure to coding, AI, and other digital tools to enhance your learning. Also gain sellable practical skills like web development, graphic design, and digital marketing.",
       icon: "https://cdn-icons-png.flaticon.com/512/2232/2232688.png",
       color: "border-cyan-400",
       bg: "bg-cyan-50"
     },
     {
-      title: "Future Skills Academy",
-      description: "Go beyond the classroom. Learn coding, digital arts, and leadership skills that give you an edge in the modern world.",
+      title: "Study Smarter & Succeed",
+      description: "Learn effective study strategies, research skills, exam techniques, and problem-solving approaches to confidently tackle challenging topics and excel in any subject",
       icon: "https://cdn-icons-png.flaticon.com/512/1085/1085465.png",
       color: "border-indigo-400",
       bg: "bg-indigo-50"
@@ -33,10 +33,10 @@ const ProgramPreview = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 tracking-tight">
-            Your Gateway to a Global Future 
+            Welcome to our STEM Accelerator Program (SAP)
           </h2>
           <p className="text-gray-500 mt-3 max-w-xl mx-auto text-base leading-relaxed">
-            Everything a secondary student needs to move from the classroom to the world stage.
+            Equipping STEM and general students with skills they need beyond the classroom.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ const ProgramPreview = () => {
               </p>
               
               <div className="flex items-center text-blue-700 font-bold cursor-pointer group-hover:underline">
-                Explore Path <span className="ml-2">→</span>
+                Explore More <span className="ml-2">→</span>
               </div>
             </div>
           ))}

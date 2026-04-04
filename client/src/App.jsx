@@ -23,6 +23,7 @@ import ProgressTracking from "./components/student/ProgressTracking";
 import PricingTrust from "./components/student/PricingTrust"
 import Dashbord from "./pages/student/Dashboard";
 import JambExam from "./components/student/JambExam";
+import Contact from "./components/student/Contact";
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="/pricing-trust" element={<PricingTrust/>} />
         <Route path="/dashboard" element={<Dashbord/>} />
         <Route path="/jambexam" element={<JambExam/>} />
+        <Route path="/contact" element={<Contact/>} />
 
 
         <Route path="/educator" element={<Educator />}>

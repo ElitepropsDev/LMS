@@ -5,27 +5,27 @@ const TestimonialsSection = () => {
   const nigerianTestimonials = [
     {
       name: "Olawale Adeyemi",
-      role: "SS3 Student, Oyo State",
+      // role: "SS3 Student, Oyo State",
       // High-quality African male portrait
       image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&h=200&q=80", 
       rating: 5,
-      feedback: "The offline feature is a lifesaver. I download lessons at the cyber café in town and watch them at night when there is no light in our village. My Math score improved from 40% to 85%!"
+      feedback: "This program helped me understand advanced maths concepts clearly and at my own pace."
     },
     {
   name: "Chiamaka Okoro",
-  role: "JAMB Candidate, Enugu",
+  // role: "JAMB Candidate, Enugu",
   // Updated reliable high-quality portrait
   image: "https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&w=200&h=200&q=80", 
   rating: 5,
-  feedback: "I was worried about data costs, but the data-saving mode is real. I used just a small bundle to get all my Physics revision videos. I feel so ready for my exams now!"
+  feedback: "I feel more confident tackling STEM and digital skills modules than I did before"
 },
     {
       name: "Musa Ibrahim",
-      role: "WAEC Student, Kano",
+      // role: "WAEC Student, Kano",
       // High-quality African male portrait
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80",
       rating: 5,
-      feedback: "Even without a steady network in my area, I can still learn. The teachers explain things so simply, just like having a private tutor right here with me."
+      feedback: "The self-paced lessons made learning easy to fit around school and other activities."
     }
   ];
 
@@ -34,7 +34,7 @@ const TestimonialsSection = () => {
       <div className="text-center md:text-left mb-10">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">Success Stories from Nigeria</h2>
         <p className="md:text-base text-gray-500 mt-2 max-w-2xl">
-          From the village to the university—see how our students are breaking barriers.
+          See how our students are building confidence, mastering new skills, and preparing for the next step in their education.
         </p>
       </div>
 
@@ -78,9 +78,9 @@ const TestimonialsSection = () => {
               </p>
               
               <div className="mt-6 flex items-center justify-between border-t border-gray-50 pt-4">
-                 <button className="text-blue-600 font-bold text-[11px] hover:underline flex items-center gap-1">
+                 {/* <button className="text-blue-600 font-bold text-[11px] hover:underline flex items-center gap-1">
                    View Result <span>→</span>
-                 </button>
+                 </button> */}
                  <span className="text-[10px] text-gray-400 font-medium bg-gray-50 px-2.5 py-1 rounded-lg">Verified Learner</span>
               </div>
             </div>

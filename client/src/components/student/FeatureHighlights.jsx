@@ -3,26 +3,26 @@ import React from 'react';
 const FeatureHighlights = () => {
   const features = [
     {
-      title: "Interactive Lessons",
-      description: "Engaging video content and live sessions.",
+      title: "Self-Paced Learning",
+      description: "Study anywhere, anytime.",
       icon: "https://cdn-icons-png.flaticon.com/512/3233/3233483.png",
       gradient: "from-blue-500 to-cyan-400"
     },
     {
-      title: "Mock Exams",
-      description: "Standardized tests for WAEC, JAMB, and IGCSE.",
+      title: " Expert Guidance",
+      description: "Tips and advice from senior students.",
       icon: "https://cdn-icons-png.flaticon.com/512/2641/2641409.png",
       gradient: "from-cyan-500 to-blue-400"
     },
     {
-      title: "Progress Tracking",
-      description: "Detailed analytics for students and parents.",
+      title: "Modern Courses",
+      description: "odules designed by experienced global instructors.",
       icon: "https://cdn-icons-png.flaticon.com/512/3591/3591448.png",
       gradient: "from-indigo-500 to-purple-400"
     },
     {
-      title: "Expert Mentorship",
-      description: "Direct access to top-rated secondary tutors.",
+      title: "Easy Lessons",
+      description: "Lessons in bite-size for easy digestion.",
       icon: "https://cdn-icons-png.flaticon.com/512/1995/1995531.png",
       gradient: "from-blue-600 to-indigo-500"
     }

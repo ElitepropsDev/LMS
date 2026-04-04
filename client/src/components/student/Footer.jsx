@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Using assets.logo here - make sure it's the version for light backgrounds */}
           <img src={assets.logo} alt="logo" className="w-24" />
           <p className="mt-6 text-center md:text-left text-sm text-slate-500 leading-relaxed">
-            Empowering students in every corner of Nigeria with high-quality, offline-first education. Bridging the digital divide one lesson at a time.
+            Empowering students with high-quality pre-university preparation and skills training.
           </p>
         </div>
 
@@ -21,8 +21,8 @@ const Footer = () => {
           <h2 className="font-bold text-slate-800 mb-6 uppercase tracking-wider text-xs">Quick Links</h2>
           <ul className="flex flex-col items-center md:items-start space-y-3 text-sm text-slate-600 font-medium">
             <li><a href="#" className="hover:text-blue-600 transition-colors">Home</a></li>
-            <li><a href="#" className="hover:text-blue-600 transition-colors">All Courses</a></li>
-            <li><a href="#" className="hover:text-blue-600 transition-colors">Scholarships</a></li>
+            <li><a href="#" className="hover:text-blue-600 transition-colors">Course Library </a></li>
+            <li><a href="#" className="hover:text-blue-600 transition-colors">Support</a></li>
             <li><a href="#" className="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
           </ul>
         </div>
@@ -50,7 +50,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-slate-200 py-8">
         <p className="text-center text-xs md:text-sm text-slate-400 font-medium">
-          Copyright 2026 © Excel Career Plus. <br className="md:hidden" /> Empowering Rural Nigerian Excellence.
+          © 2026 exel career plus STEM Prep Program. <br className="md:hidden" /> Empowering STEM and Digital Skill learning.
         </p>
       </div>
     </footer>
