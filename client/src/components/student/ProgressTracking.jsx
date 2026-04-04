@@ -2,7 +2,7 @@ import React from "react";
 
 const ProgressTracking = () => {
   return (
-    <section className="py-20 bg-blue-50">
+    <section className="w-full py-16 md:py-24 bg-blue-50">
       <div className="max-w-6xl mx-auto px-7 flex flex-col md:flex-row items-center gap-16">
         {/* Left Side: Visual Dashboard Piece */}
         <div className="w-full md:w-1/2 order-2 md:order-1">

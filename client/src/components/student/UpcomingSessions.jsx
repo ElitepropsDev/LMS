@@ -50,7 +50,8 @@ const UpcomingSessions = () => {
   ];
 
   return (
-    <section className="pt-12 md:pt-24 pb-16 bg-cyan-50">
+    /* Added w-full and ensured bg-cyan-50 is on the outermost wrapper */
+    <section className="w-full bg-cyan-50 pt-12 md:pt-24 pb-16">
       <div className="max-w-6xl mx-auto px-4 md:px-7">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-8 md:mb-10 text-center md:text-left">
           <div>
@@ -69,14 +70,12 @@ const UpcomingSessions = () => {
           </button>
         </div>
 
-        {/* Changed to grid-cols-1 for mobile, md:grid-cols-3 for desktop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
           {sessions.map((session, index) => (
             <div
               key={index}
-              className="group rounded-xl md:rounded-3xl border border-gray-100 bg-white overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-row md:flex-col"
+              className="group rounded-xl md:rounded-3xl border border-cyan-100/50 bg-white overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-row md:flex-col"
             >
-              {/* Image: fixed width on mobile, full width on desktop */}
               <div className="relative w-28 h-28 md:w-full md:h-44 overflow-hidden flex-shrink-0">
                 <img
                   src={session.img}
@@ -88,7 +87,6 @@ const UpcomingSessions = () => {
                 </div>
               </div>
 
-              {/* Tighter padding and content layout */}
               <div className="p-3 md:p-6 flex-1 flex flex-col min-w-0">
                 <div className="flex items-center gap-1 text-blue-500 text-[8px] md:text-xs font-semibold mb-1">
                   <span className="w-1 h-1 bg-red-500 rounded-full animate-pulse"></span>
