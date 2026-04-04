@@ -30,7 +30,7 @@ const TestimonialsSection = () => {
   ];
 
   return (
-    <div className="pt-0 pb-16 px-8 md:px-0 -mt-20 md:mt-0 max-w-6xl mx-auto">
+    <div className="bg-cyan-50 pt-0 pb-16 px-8 md:px-0 -mt-20 md:mt-0 max-w-6xl mx-auto">
       <div className="text-center md:text-left mb-10">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">Success Stories from Nigeria</h2>
         <p className="md:text-base text-gray-500 mt-2 max-w-2xl">
