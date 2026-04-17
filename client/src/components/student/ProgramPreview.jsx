@@ -3,22 +3,22 @@ import React from 'react';
 const ProgramPreview = () => {
   const pathways = [
     {
-      title: "Intro to Advanced Math Concepts for STEM",
-      description: "Master key math ideas in a clear, concept-first way, building reasoning skills and confidence for university STEM.",
+      title: "Academic Concepts",
+      description: "Build strong understanding of key STEM concepts through clear, guided explanations that improve reasoning and prepare you for advanced studies.",
       icon: "https://cdn-icons-png.flaticon.com/512/3074/3074058.png",
       color: "border-blue-400",
       bg: "bg-blue-50"
     },
     {
-      title: "Digital Tools & Practical Skills",
-      description: "Exposure to coding, AI, and other digital tools to enhance your learning. Also gain sellable practical skills like web development, graphic design, and digital marketing.",
+      title: "Skills & Digital Readiness",
+      description: "Gain exposure to essential digital tools like coding and AI, alongside practical, job-ready skills such as web design, digital marketing etc. Includes career guidance modules to help students understand pathways and how to apply their skills in real-world opportunities.",
       icon: "https://cdn-icons-png.flaticon.com/512/2232/2232688.png",
       color: "border-cyan-400",
       bg: "bg-cyan-50"
     },
     {
-      title: "Study Smarter & Succeed",
-      description: "Learn effective study strategies, research skills, exam techniques, and problem-solving approaches to confidently tackle challenging topics and excel in any subject",
+      title: "Study Systems & Exam Performance",
+      description: "Learn effective study methods, research skills, and exam strategies that help you understand difficult topics and improve performance across subjects.",
       icon: "https://cdn-icons-png.flaticon.com/512/1085/1085465.png",
       color: "border-indigo-400",
       bg: "bg-indigo-50"
@@ -33,10 +33,13 @@ const ProgramPreview = () => {
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 tracking-tight">
-            Welcome to our STEM Accelerator Program (SAP)
+            A complete student success system — not just a learning platform
           </h2>
           <p className="text-gray-500 mt-3 max-w-xl mx-auto text-base leading-relaxed">
-            Equipping STEM and general students with skills they need beyond the classroom.
+            From WAEC and JAMB past-question support, 
+            to academic explanation modules, pre-university preparation, 
+            and short skill courses — everything is designed to help 
+            students move from where they are to where they want to be.
           </p>
         </div>
 

@@ -12,10 +12,10 @@ const PricingTrust = () => {
         {/* Header - Reduced mb-8 to bring the cards closer to the title */}
         <div className="mb-10">
           <h2 className="text-2xl md:text-4xl font-bold text-gray-800 tracking-tight">
-            Quality Education, <span className="text-blue-600"> Accessible to Everyone</span>
+            Quality education, that stays <span className="text-blue-600">  affordable and flexible</span>
           </h2>
           <p className="text-gray-500 mt-2 max-w-2xl mx-auto text-sm md:text-base">
-            We make pre-university learning, STEM, and digital skills easy to access for all students, so cost or location never stands in the way of progress.
+            We make learning accessible so students can start without financial barriers.
           </p>
         </div>
 
@@ -27,9 +27,9 @@ const PricingTrust = () => {
             <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" className="w-7 h-7 object-contain" alt="Pay" />
             </div>
-            <h3 className="text-lg font-bold text-gray-800 mb-2">Pay-As-You-Go</h3>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Pay-As-You-Need</h3>
             <p className="text-gray-500 text-xs leading-relaxed">
-               No subscriptions — pay only for the modules you need.
+              No subscriptions — pay only for the modules you need.
             </p>
           </div>
 

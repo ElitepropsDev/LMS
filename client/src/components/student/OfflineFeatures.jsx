@@ -4,17 +4,17 @@ const OfflineFeatures = () => {
   const points = [
     {
       title: "Responsive Platform ",
-      desc: "Lessons designed to work perfectly on phones, tablets, and laptops. ",
+      desc: "Works seamlessly across phones, tablets, and laptops. ",
       icon: "https://cdn-icons-png.flaticon.com/512/3437/3437364.png"
     },
     {
       title: "Data Friendly",
-      desc: "Our platform’s technology compresses videos to reduce data usage, so you can stream more lessons while spending less.",
+      desc: "Optimized to reduce data usage while streaming lessons.",
       icon: "https://cdn-icons-png.flaticon.com/512/2040/2040504.png"
     },
     {
       title: "Concept-Focused Learning ",
-      desc: " Clear, easy-to-follow lessons that emphasize understanding over memorization, helping you master key concepts faster.",
+      desc: " o Clear, easy-to-follow lessons focused on understanding, not memorization.",
       icon: "https://cdn-icons-png.flaticon.com/512/1792/1792155.png"
     }
   ];
@@ -33,7 +33,7 @@ const OfflineFeatures = () => {
             Learn anywhere,  <br /> <span className="text-blue-200">Anytime.</span>
           </h2>
           <p className="text-blue-100 mt-4 text-lg leading-relaxed">
-            Access lessons on your phone or tablet — no heavy setup needed. Designed to run smoothly even on slower networks, so you can focus on learning.
+            Access lessons on your phone or tablet with smooth performance, even on low data or slower networks.
           </p>
           
           <div className="mt-10 space-y-8">

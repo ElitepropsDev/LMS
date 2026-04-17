@@ -7,13 +7,13 @@ const TestimonialsSection = () => {
       name: "Olawale Adeyemi",
       image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=200&h=200&q=80", 
       rating: 5,
-      feedback: "This program helped me understand advanced maths concepts clearly and at my own pace."
+      feedback: "This helped me understand difficult math topics in a much simpler way."
     },
     {
       name: "Chiamaka Okoro",
       image: "https://images.unsplash.com/photo-1531123414780-f74242c2b052?auto=format&fit=crop&w=200&h=200&q=80", 
       rating: 5,
-      feedback: "I feel more confident tackling STEM and digital skills modules than I did before"
+      feedback: "I feel more confident tackling STEM and digital skills modules than before."
     },
     {
       name: "Musa Ibrahim",

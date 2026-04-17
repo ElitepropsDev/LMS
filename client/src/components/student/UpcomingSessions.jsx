@@ -4,25 +4,25 @@ const UpcomingSessions = () => {
   const sessions = [
     {
       title: "Calculus for Beginners",
-      description: "Easy-to-understand STEM math concepts",
+      description: "Simple introduction to core STEM math concepts.",
       instructor: "Self-Paced, online",
-      date: "Tomorrow, 4:00 PM",
+      date: "4:00 PM",
       students: "128 Joined",
       tag: "STEM",
       img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
     },
     {
-      title: "Intro to Python",
-      description: "Coding for non-technical learners",
+      title: "University Orientation Program 1",
+      description: "Structured modules to prepare students for university learning and expectations.",
       instructor: "Self-Paced, online",
       date: "Friday, 2:00 PM",
       students: "250 Joined",
-      tag: "Digital Skills",
+      tag: "Pre-Uni",
       img: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=400&q=80",
     },
     {
       title: "Learning with AI",
-      description: "AI concepts, risks, and practical use",
+      description: "Understand AI concepts, uses, and real-world applications",
       instructor: "Self-Paced, online",
       date: "Sat, 11:00 AM",
       students: "85 Joined",
@@ -30,12 +30,12 @@ const UpcomingSessions = () => {
       img: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=400&q=80",
     },
     {
-      title: "Digital Marketing Bootcamp",
-      description: "Practical skills to earn or create projects",
+      title: "WAEC Math Problem Solving 1",
+      description: "Step-by-step video solutions to challenging WAEC math questions.",
       instructor: "Self-Paced, online",
       date: "Sat, 11:00 AM",
       students: "85 Joined",
-      tag: "Practical Skills",
+      tag: "Exam Prep",
       img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=400&q=80",
     },
     {
@@ -59,14 +59,14 @@ const UpcomingSessions = () => {
               Explore Modules
             </h2>
             <p className="text-gray-500 mt-1 text-xs md:text-sm">
-              A glimpse of modules coming soon.
+              A preview of modules designed to support academic growth, skill development, and exam support.
             </p>
             <p className="text-blue-600 font-bold mt-1 text-[10px] md:text-sm uppercase tracking-wider">
-              Curriculum by international educators
+             Built with guidance from experienced educators
             </p>
           </div>
           <button className="hidden md:block text-blue-600 font-bold hover:underline">
-            Join to Access Course Library →
+            Get Early Access to Modules →
           </button>
         </div>
 
@@ -118,7 +118,7 @@ const UpcomingSessions = () => {
         </div>
 
         <button className="md:hidden block w-full mt-8 py-4 bg-blue-600 text-white font-black rounded-xl text-sm shadow-xl shadow-blue-200">
-          Join to Access Course Library
+          Get Early Access to Modules 
         </button>
       </div>
     </section>

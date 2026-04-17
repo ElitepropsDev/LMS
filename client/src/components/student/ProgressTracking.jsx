@@ -85,16 +85,14 @@ const ProgressTracking = () => {
             Keep Parents<span className="text-blue-600"> Updated.</span>
           </h2>
           <p className="text-gray-500 mt-6 text-lg leading-relaxed">
-            Learning is a team effort. Our platform tracks every lesson and
-            quiz, giving parents a clear view of their child’s progress in real
-            time.
+            Learning is a shared journey — parents can track student progress in real time.
           </p>
 
           <ul className="mt-8 space-y-4 text-left inline-block md:block">
             {[
-              "Weekly Performance Alerts — parents get updates on progress. ",
-              "Track Learning Milestones — see the goals students are reaching. ",
-              " Completion Certificates — celebrate achievements as modules are finished. ",
+              " Progress Updates — Regular updates on learning performance.",
+              " Learning Milestones —Track goals and achievements as modules are completed.",
+              "  Completion Tracking — See finished modules and learning progress clearly. ",
             ].map((item, i) => (
               <li
                 key={i}

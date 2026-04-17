@@ -9,20 +9,20 @@ const FeatureHighlights = () => {
       gradient: "from-blue-500 to-cyan-400"
     },
     {
-      title: " Expert Guidance",
-      description: "Tips and advice from senior students.",
+      title: "Career & Study Guide",
+      description: "Get insights and career tips.",
       icon: "https://cdn-icons-png.flaticon.com/512/2641/2641409.png",
       gradient: "from-cyan-500 to-blue-400"
     },
     {
-      title: "Modern Courses",
-      description: "odules designed by experienced global instructors.",
+      title: "Easy Learning Modules",
+      description: " Designed for easy understanding.",
       icon: "https://cdn-icons-png.flaticon.com/512/3591/3591448.png",
       gradient: "from-indigo-500 to-purple-400"
     },
     {
-      title: "Easy Lessons",
-      description: "Lessons in bite-size for easy digestion.",
+      title: "Exam Support",
+      description: "",
       icon: "https://cdn-icons-png.flaticon.com/512/1995/1995531.png",
       gradient: "from-blue-600 to-indigo-500"
     }

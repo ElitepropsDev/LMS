@@ -17,8 +17,6 @@ const Dashboard = () => {
   const [filterDifficulty, setFilterDifficulty] = useState("All");
   const [filterDuration, setFilterDuration] = useState("All");
 
-  
-
   const dummyLibrary = [
     {
       id: "py-101",
@@ -67,20 +65,22 @@ const Dashboard = () => {
       isLive: true, // Coming Soon
     },
   ];
-  const filteredModules = dummyLibrary.filter(course => {
-  const matchCat = filterCategory === "All" || course.category === filterCategory;
-  const matchDiff = filterDifficulty === "All" || course.difficulty === filterDifficulty;
-  
-  // Basic duration logic (you can adjust the hours to match your needs)
-  const hours = parseInt(course.duration);
-  let durLabel = "Short";
-  if(hours >= 10) durLabel = "Long";
-  else if(hours >= 5) durLabel = "Medium";
-  
-  const matchDur = filterDuration === "All" || durLabel === filterDuration;
+  const filteredModules = dummyLibrary.filter((course) => {
+    const matchCat =
+      filterCategory === "All" || course.category === filterCategory;
+    const matchDiff =
+      filterDifficulty === "All" || course.difficulty === filterDifficulty;
 
-  return matchCat && matchDiff && matchDur;
-});
+    // Basic duration logic (you can adjust the hours to match your needs)
+    const hours = parseInt(course.duration);
+    let durLabel = "Short";
+    if (hours >= 10) durLabel = "Long";
+    else if (hours >= 5) durLabel = "Medium";
+
+    const matchDur = filterDuration === "All" || durLabel === filterDuration;
+
+    return matchCat && matchDiff && matchDur;
+  });
 
   return (
     <div className="relative flex flex-col md:flex-row min-h-screen bg-slate-50">
@@ -99,11 +99,36 @@ const Dashboard = () => {
           >
             <span>📚</span> My Courses
           </button>
+
           <button
             onClick={() => setActiveTab("offline")}
-            className={`w-full flex items-center gap-3 px-4 py-3 transition-all font-medium ${activeTab === "offline" ? "bg-sky-50 text-sky-600 border-r-4 border-sky-600" : "text-slate-600 hover:bg-slate-100"}`}
+            className={`w-full flex items-center gap-3 px-4 py-3 transition-all font-bold ${activeTab === "offline" ? "bg-sky-50 text-sky-600 border-r-4 border-sky-600" : "text-slate-600 hover:bg-slate-100"}`}
           >
-            <span>⬇️</span> Course Library
+            <span>🏛️</span> Course Library
+          </button>
+
+          <button
+            onClick={() => setActiveTab("exams")}
+            className={`w-full flex items-center justify-between gap-3 px-4 py-3 transition-all font-bold ${activeTab === "exams" ? "bg-sky-50 text-sky-600 border-r-4 border-sky-600" : "text-slate-600 hover:bg-slate-100"}`}
+          >
+            <div className="flex items-center gap-3">
+              <span>📝</span> Exams
+            </div>
+            <span className="text-[7px] bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">
+              Soon
+            </span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("resources")}
+            className={`w-full flex items-center justify-between gap-3 px-4 py-3 transition-all font-bold ${activeTab === "resources" ? "bg-sky-50 text-sky-600 border-r-4 border-sky-600" : "text-slate-600 hover:bg-slate-100"}`}
+          >
+            <div className="flex items-center gap-3">
+              <span>📂</span> Resources
+            </div>
+            <span className="text-[7px] bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">
+              Soon
+            </span>
           </button>
         </nav>
       </div>
@@ -596,95 +621,126 @@ const Dashboard = () => {
         )}
       </div>
 
+      {/* Exams View */}
+      {activeTab === "exams" && (
+        <div className="flex flex-col items-center justify-center min-h-[50vh] md:min-h-[70vh] w-full py-10 md:py-0 animate-fadeIn">
+          <div className="w-20 h-20 bg-sky-50 rounded-full flex items-center justify-center text-4xl mb-4 shadow-sm shadow-blue-100">
+            📝
+          </div>
+          <h2 className="text-2xl font-black text-slate-800 uppercase italic">
+            Exams Portal
+          </h2>
+          <p className="text-blue-500 font-bold text-xs uppercase tracking-widest mt-2">
+            Coming Soon to your Dashboard
+          </p>
+        </div>
+      )}
+
+      {/* Resources View */}
+      {activeTab === "resources" && (
+        <div className="flex flex-col items-center justify-center min-h-[50vh] md:min-h-[70vh] w-full py-10 md:py-0 animate-fadeIn">
+          <div className="w-20 h-20 bg-sky-50 rounded-full flex items-center justify-center text-4xl mb-4 shadow-sm shadow-blue-100">
+            📂
+          </div>
+          <h2 className="text-2xl font-black text-slate-800 uppercase italic">
+            Learning Resources
+          </h2>
+          <p className="text-blue-500 font-bold text-xs uppercase tracking-widest mt-2">
+            PDFs & Guides Coming Soon
+          </p>
+        </div>
+      )}
+
       {/* --- SLIDE-OVER DRAWER COMPONENT --- */}
-{isDrawerOpen && (
-  <div className="fixed inset-0 z-[999] overflow-hidden">
-    {/* Backdrop with a softer blue-tinted blur */}
-    <div
-      className="absolute inset-0 bg-blue-900/40 backdrop-blur-md transition-opacity"
-      onClick={() => setIsDrawerOpen(false)}
-    ></div>
-    
-    <div className="fixed inset-0 flex items-center justify-center p-4">
-      <div className="w-screen max-w-md">
-        {/* Main Card: Blue border-t, rounded, and white bg */}
-        <div className="flex flex-col bg-white shadow-2xl shadow-blue-200 rounded-3xl border-t-8 border-blue-500 animate-fadeIn overflow-hidden">
-          
-          {/* Header: Sky 50 background */}
-          <div className="p-8 bg-sky-50 border-b border-blue-100">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-black text-blue-600 uppercase italic tracking-tighter">
-                  Step 01: Profile Data
-                </h2>
-                <div className="h-1 w-10 bg-blue-400 mt-1 rounded-full"></div>
+      {isDrawerOpen && (
+        <div className="fixed inset-0 z-[999] overflow-hidden">
+          {/* Backdrop with a softer blue-tinted blur */}
+          <div
+            className="absolute inset-0 bg-blue-900/40 backdrop-blur-md transition-opacity"
+            onClick={() => setIsDrawerOpen(false)}
+          ></div>
+
+          <div className="fixed inset-0 flex items-center justify-center p-4">
+            <div className="w-screen max-w-md">
+              {/* Main Card: Blue border-t, rounded, and white bg */}
+              <div className="flex flex-col bg-white shadow-2xl shadow-blue-200 rounded-3xl border-t-8 border-blue-500 animate-fadeIn overflow-hidden">
+                {/* Header: Sky 50 background */}
+                <div className="p-8 bg-sky-50 border-b border-blue-100">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h2 className="text-xl font-black text-blue-600 uppercase italic tracking-tighter">
+                        Step 01: Profile Data
+                      </h2>
+                      <div className="h-1 w-10 bg-blue-400 mt-1 rounded-full"></div>
+                    </div>
+                    <button
+                      onClick={() => setIsDrawerOpen(false)}
+                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white text-slate-400 hover:text-red-500 hover:shadow-md transition-all font-bold"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+
+                {/* Form Body */}
+                <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-white">
+                  <div className="space-y-4">
+                    <label className="block text-[10px] font-black uppercase text-blue-500 tracking-widest ml-1">
+                      Academic Info
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="School / College Name"
+                      className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
+                    />
+                    <div className="relative">
+                      <select className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all">
+                        <option>Select Grade / Level</option>
+                        <option>SSS 1</option>
+                        <option>SSS 2</option>
+                        <option>SSS 3</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">
+                        ↓
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 pt-6 border-t border-blue-50">
+                    <label className="block text-[10px] font-black uppercase text-blue-400 tracking-widest ml-1">
+                      Guardian / Parent Contact
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Guardian Full Name"
+                      className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
+                    />
+                    <input
+                      type="text"
+                      placeholder="WhatsApp / Phone Number"
+                      className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
+                    />
+                  </div>
+                </div>
+
+                {/* Footer Actions */}
+                <div className="p-8 bg-sky-50 border-t border-blue-100">
+                  <button
+                    onClick={() => {
+                      setIsProfileComplete(true);
+                      setIsDrawerOpen(false);
+                      alert("Profile Updated! Step 1 is now complete.");
+                    }}
+                    className="w-full py-5 bg-blue-600 text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all active:scale-[0.98]"
+                  >
+                    Save & Complete Step 1
+                  </button>
+                </div>
               </div>
-              <button
-                onClick={() => setIsDrawerOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-white text-slate-400 hover:text-red-500 hover:shadow-md transition-all font-bold"
-              >
-                ✕
-              </button>
             </div>
-          </div>
-
-          {/* Form Body */}
-          <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-white">
-            <div className="space-y-4">
-              <label className="block text-[10px] font-black uppercase text-blue-500 tracking-widest ml-1">
-                Academic Info
-              </label>
-              <input
-                type="text"
-                placeholder="School / College Name"
-                className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
-              />
-              <div className="relative">
-                <select className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all">
-                  <option>Select Grade / Level</option>
-                  <option>SSS 1</option>
-                  <option>SSS 2</option>
-                  <option>SSS 3</option>
-                </select>
-                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">↓</div>
-              </div>
-            </div>
-
-            <div className="space-y-4 pt-6 border-t border-blue-50">
-              <label className="block text-[10px] font-black uppercase text-blue-400 tracking-widest ml-1">
-                Guardian / Parent Contact
-              </label>
-              <input
-                type="text"
-                placeholder="Guardian Full Name"
-                className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
-              />
-              <input
-                type="text"
-                placeholder="WhatsApp / Phone Number"
-                className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
-              />
-            </div>
-          </div>
-
-          {/* Footer Actions */}
-          <div className="p-8 bg-sky-50 border-t border-blue-100">
-            <button
-              onClick={() => {
-                setIsProfileComplete(true);
-                setIsDrawerOpen(false);
-                alert("Profile Updated! Step 1 is now complete.");
-              }}
-              className="w-full py-5 bg-blue-600 text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all active:scale-[0.98]"
-            >
-              Save & Complete Step 1
-            </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
+      )}
     </div>
   );
 };

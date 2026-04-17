@@ -17,14 +17,16 @@ const CallToAction = () => {
           </span>
 
           <h1 className="text-3xl md:text-5xl text-white font-extrabold leading-tight">
-            Learn Anywhere, <br />
-            <span className="text-sky-100">Anytime.</span>
+            Start Learning at <br />
+            <span className="text-sky-100">Your Own Pace.</span>
           </h1>
 
           <p className="text-white/90 text-sm md:text-xl max-w-2xl font-medium">
-            Join us to explore our STEM prep courses and practical skills like
-            graphic design and web development, whether you are getting ready
-            for university or considering future opportunities.
+            Join a structured platform for academic support, exam preparation,
+            career guidance, and practical skill development. Access learning 
+            modules designed to help you understand key concepts, prepare for 
+            exams, explore career paths, and build useful digital skills for 
+            the future.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 mt-6 w-full sm:w-auto">
@@ -44,15 +46,15 @@ const CallToAction = () => {
           <div className="mt-10 pt-10 border-t border-white/20 w-full flex flex-wrap justify-center gap-8 text-white/80 text-xs md:text-sm font-bold">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
-              Early access to the platform and courses 
+              Exam support 
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
-              Easy payment method
+              Flexible and affordable 
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-white rounded-full animate-ping"></span>
-              Parent progress report
+              Structured learning path
             </div>
           </div>
         </div>
