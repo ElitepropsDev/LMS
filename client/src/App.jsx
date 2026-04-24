@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Routes, Route, useLocation, useMatch } from "react-router-dom";
+import React from "react";
+import { Routes, Route, useMatch } from "react-router-dom";
 import Navbar from "./components/student/Navbar";
 import Home from "./pages/student/Home";
 import CourseDetails from "./pages/student/CourseDetails";
@@ -20,11 +20,14 @@ import FeatureHighlights from "./components/student/FeatureHighlights";
 import UpcomingSessions from "./components/student/UpcomingSessions";
 import OfflineFeatures from "./components/student/OfflineFeatures";
 import ProgressTracking from "./components/student/ProgressTracking";
-import PricingTrust from "./components/student/PricingTrust"
+import PricingTrust from "./components/student/PricingTrust";
 import Dashbord from "./pages/student/Dashboard";
 import JambExam from "./components/student/JambExam";
 import Contact from "./components/student/Contact";
+import Login from "./components/student/Login";
 
+// 🔐 IMPORT PROTECTED ROUTE
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   const isEducatorRoute = useMatch("/educator/*");
@@ -32,29 +35,66 @@ const App = () => {
   return (
     <div className="text-default min-h-screen bg-white">
       <ToastContainer />
-      {/* Render Student Navbar only if not on educator routes */}
+
+      {/* Navbar only for student area */}
       {!isEducatorRoute && <Navbar />}
+
       <Routes>
+        {/* 🌍 PUBLIC ROUTES */}
         <Route path="/" element={<Home />} />
         <Route path="/course/:id" element={<CourseDetails />} />
         <Route path="/course-list" element={<CoursesList />} />
         <Route path="/course-list/:input" element={<CoursesList />} />
-        <Route path="/my-enrollments" element={<MyEnrollments />} />
-        <Route path="/player/:courseId" element={<Player />} />
-        <Route path="/loading/:path" element={<Loading />} />
-        <Route path="/program-preview" element={<ProgramPreview/>} />
-        <Route path="/feature-highlights" element={<FeatureHighlights/>} />
-        <Route path="/upcomingsessions" element={<UpcomingSessions/>} />
-        <Route path="/offline-features" element={<OfflineFeatures/>} />
-        <Route path="/progress-tracking" element={<ProgressTracking/>} />
-        <Route path="/pricing-trust" element={<PricingTrust/>} />
-        <Route path="/dashboard" element={<Dashbord/>} />
-        <Route path="/jambexam" element={<JambExam/>} />
-        <Route path="/contact" element={<Contact/>} />
+        <Route path="/program-preview" element={<ProgramPreview />} />
+        <Route path="/feature-highlights" element={<FeatureHighlights />} />
+        <Route path="/upcomingsessions" element={<UpcomingSessions />} />
+        <Route path="/offline-features" element={<OfflineFeatures />} />
+        <Route path="/progress-tracking" element={<ProgressTracking />} />
+        <Route path="/pricing-trust" element={<PricingTrust />} />
+        <Route path="/jambexam" element={<JambExam />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
 
+        {/* 🔐 PROTECTED STUDENT ROUTES */}
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashbord />
+            </ProtectedRoute>
+          }
+        />
 
+        <Route
+          path="/my-enrollments"
+          element={
+            <ProtectedRoute>
+              <MyEnrollments />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/player/:courseId"
+          element={
+            <ProtectedRoute>
+              <Player />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/loading/:path"
+          element={
+            <ProtectedRoute>
+              <Loading />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* 👨‍🏫 EDUCATOR ROUTES */}
         <Route path="/educator" element={<Educator />}>
-          <Route path="/educator" element={<Dashboard />} />
+          <Route path="" element={<Dashboard />} />
           <Route path="add-course" element={<AddCourse />} />
           <Route path="my-courses" element={<MyCourses />} />
           <Route path="student-enrolled" element={<StudentsEnrolled />} />

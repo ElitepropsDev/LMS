@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 
 const Dashboard = () => {
-  const { navigate } = useContext(AppContext);
+  const { navigate, logoutUser } = useContext(AppContext);
 
   // Existing States
   const [activeTab, setActiveTab] = useState("courses");
@@ -130,6 +130,16 @@ const Dashboard = () => {
               Soon
             </span>
           </button>
+
+          <button
+            onClick={() => {
+              localStorage.removeItem("token"); // or your auth key
+              navigate("/login");
+            }}
+            className={`w-full flex items-center gap-3 px-4 py-3 transition-all font-bold text-red-600 hover:bg-red-50`}
+          >
+            <span>🚪</span> Logout
+          </button>
         </nav>
       </div>
 
@@ -137,7 +147,7 @@ const Dashboard = () => {
       <div className="flex-1 p-6 md:p-10">
         {activeTab === "courses" && (
           <>
-            {hasEnrolled && enrolledCourses.length > 0 ? (
+            {hasEnrolled && enrolledCourses?.length > 0 ? (
               <div className="grid grid-cols-3 gap-2 md:gap-6 animate-fadeIn">
                 {enrolledCourses.map((course) => (
                   <div
