@@ -127,7 +127,7 @@ const Dashboard = () => {
               <span>📂</span> Resources
             </div>
             <span className="text-[7px] bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded font-black uppercase tracking-tighter">
-              Soon
+              Soo
             </span>
           </button>
 
