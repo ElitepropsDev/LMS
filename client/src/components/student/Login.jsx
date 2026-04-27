@@ -25,24 +25,42 @@ const Login = () => {
   // =========================
   const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       setLoading(true);
+
+      // 1. Send credentials to your Express API
       const { data: res } = await axios.post(backendUrl + "/api/auth/login", {
         email: data.email,
         password: data.password,
       });
 
+      // 2. Check if the backend says "Success"
       if (res.success) {
+        // 3. Save the User and Token to your Global State (AppContext)
+        // res.user should contain: { name, email, role, etc. }
         loginUser(res.user, res.token);
-        toast.success("Welcome back! 🚀");
+
+        toast.success(`Welcome back, ${res.user.name}! 🚀`);
+
+        // 4. SMART REDIRECT BASED ON ROLE
+        // This is where the magic happens
         setTimeout(() => {
-          navigate("/dashboard");
+          if (res.user.role === "admin") {
+            navigate("/admin"); // Take the Boss to the Control Center
+          } else {
+            navigate("/dashboard"); // Take Students to the Learner Portal
+          }
         }, 300);
       } else {
-        toast.error(res.message);
+        // If backend returns success: false
+        toast.error(res.message || "Login failed");
       }
     } catch (error) {
-      toast.error(error.message);
+      // Handle cases like "User not found", "Wrong Password", or "Server Down"
+      const errorMsg =
+        error.response?.data?.message || "Server connection failed";
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
@@ -111,7 +129,7 @@ const Login = () => {
                   name="name"
                   placeholder="Full Name"
                   onChange={handleChange}
-                  className="w-full bg-white/[0.05] border border-white/10 p-4 rounded-2xl text-white outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-gray-500"
+                  className="w-full bg-white/[0.05] border border-white/10 p-4 rounded-2xl text-black outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all placeholder:text-gray-500"
                   required
                 />
               </div>

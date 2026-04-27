@@ -11,6 +11,7 @@ import educatorRouter from './routes/educatorRoutes.js';
 import courseRouter from './routes/courseRoute.js';
 
 import { stripeWebhooks } from './controllers/webhooks.js';
+import adminRouter from './routes/adminRoute.js';
 
 // Initialize Express
 const app = express();
@@ -34,6 +35,7 @@ app.use('/api/educator', educatorRouter);
 app.use('/api/course', courseRouter);
 app.use('/api/user', userRouter);
 app.use("/api/auth", authRouter);
+app.use('/api/admin', adminRouter);
 
 // Port
 const PORT = process.env.PORT || 5000;
