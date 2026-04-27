@@ -25,19 +25,22 @@ import Dashbord from "./pages/student/Dashboard";
 import JambExam from "./components/student/JambExam";
 import Contact from "./components/student/Contact";
 import Login from "./components/student/Login";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 // 🔐 IMPORT PROTECTED ROUTE
 import ProtectedRoute from "./components/ProtectedRoute";
+import Sidebar from "./components/admin/Sidebar";
 
 const App = () => {
   const isEducatorRoute = useMatch("/educator/*");
+  const isAdminRoute = useMatch("/admin/*");
 
   return (
     <div className="text-default min-h-screen bg-white">
       <ToastContainer />
 
       {/* Navbar only for student area */}
-      {!isEducatorRoute && <Navbar />}
+      {!isEducatorRoute && !isAdminRoute && <Navbar />}
 
       <Routes>
         {/* 🌍 PUBLIC ROUTES */}
@@ -98,6 +101,21 @@ const App = () => {
           <Route path="add-course" element={<AddCourse />} />
           <Route path="my-courses" element={<MyCourses />} />
           <Route path="student-enrolled" element={<StudentsEnrolled />} />
+        </Route>
+
+        {/* 🛡️ ADMIN LAYOUT */}
+        <Route
+          path="/admin"
+          element={
+            <div className="flex min-h-screen">
+              <Sidebar />
+              <div className="flex-1 bg-gray-50">
+                <AdminDashboard />
+              </div>
+            </div>
+          }
+        >
+          {/* We will add more admin sub-pages here later! */}
         </Route>
       </Routes>
     </div>

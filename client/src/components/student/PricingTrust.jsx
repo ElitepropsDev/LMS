@@ -63,7 +63,7 @@ const PricingTrust = () => {
         {/* Local Payment Details */}
         <div className="mt-12 flex flex-wrap justify-center items-center gap-6 opacity-60">
             <span className="text-xs font-bold text-gray-600">Bank Transfer</span>
-            <span className="text-xs font-bold text-gray-600">USSD *556#</span>
+            {/* <span className="text-xs font-bold text-gray-600">USSD *556#</span> */}
             <span className="text-xs font-bold text-gray-600">POS/Agency Banking</span>
         </div>
       </div>

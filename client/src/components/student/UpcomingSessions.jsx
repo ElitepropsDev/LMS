@@ -5,17 +5,18 @@ const UpcomingSessions = () => {
     {
       title: "Calculus for Beginners",
       description: "Simple introduction to core STEM math concepts.",
-      instructor: "Self-Paced, online",
-      date: "4:00 PM",
+      instructor: "Expert Guided",
+      date: "Flexible",
       students: "128 Joined",
       tag: "STEM",
-      img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
+      img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=400&q=80",
     },
     {
       title: "University Orientation Program 1",
-      description: "Structured modules to prepare students for university learning and expectations.",
-      instructor: "Self-Paced, online",
-      date: "Friday, 2:00 PM",
+      description:
+        "Structured modules to prepare students for university learning and expectations.",
+      instructor: "Expert Guided",
+      date: "Flexible",
       students: "250 Joined",
       tag: "Pre-Uni",
       img: "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=400&q=80",
@@ -23,26 +24,27 @@ const UpcomingSessions = () => {
     {
       title: "Learning with AI",
       description: "Understand AI concepts, uses, and real-world applications",
-      instructor: "Self-Paced, online",
-      date: "Sat, 11:00 AM",
+      instructor: "Expert Guided",
+      date: "Flexible",
       students: "85 Joined",
       tag: "Digital Skills",
       img: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=400&q=80",
     },
     {
       title: "WAEC Math Problem Solving 1",
-      description: "Step-by-step video solutions to challenging WAEC math questions.",
-      instructor: "Self-Paced, online",
-      date: "Sat, 11:00 AM",
+      description:
+        "Step-by-step video solutions to challenging WAEC math questions.",
+      instructor: "Expert Guided",
+      date: "Flexible",
       students: "85 Joined",
       tag: "Exam Prep",
-      img: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=400&q=80",
+      img: "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?auto=format&fit=crop&w=400&q=80",
     },
     {
       title: "Web Design Essentials",
       description: "Build websites from scratch without code",
-      instructor: "Self-Paced, online",
-      date: "Sat, 11:00 AM",
+      instructor: "Expert Guided",
+      date: "Flexible",
       students: "85 Joined",
       tag: "Practical Skills",
       img: "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=400&q=80",
@@ -59,10 +61,11 @@ const UpcomingSessions = () => {
               Explore Modules
             </h2>
             <p className="text-gray-500 mt-1 text-xs md:text-sm">
-              A preview of modules designed to support academic growth, skill development, and exam support.
+              A preview of modules designed to support academic growth, skill
+              development, and exam support.
             </p>
             <p className="text-blue-600 font-bold mt-1 text-[10px] md:text-sm uppercase tracking-wider">
-             Built with guidance from experienced educators
+              Built with guidance from experienced educators
             </p>
           </div>
           <button className="hidden md:block text-blue-600 font-bold hover:underline">
@@ -103,7 +106,9 @@ const UpcomingSessions = () => {
 
                 <div className="mt-auto pt-2 md:pt-4 border-t border-gray-50 flex items-center justify-between">
                   <div className="flex flex-col">
-                    <span className="text-[7px] md:text-[10px] text-gray-400 font-medium">Mode</span>
+                    <span className="text-[7px] md:text-[10px] text-gray-400 font-medium">
+                      Mode
+                    </span>
                     <span className="text-[9px] md:text-sm font-bold text-gray-700 truncate">
                       {session.instructor}
                     </span>
@@ -118,7 +123,7 @@ const UpcomingSessions = () => {
         </div>
 
         <button className="md:hidden block w-full mt-8 py-4 bg-blue-600 text-white font-black rounded-xl text-sm shadow-xl shadow-blue-200">
-          Get Early Access to Modules 
+          Get Early Access to Modules
         </button>
       </div>
     </section>

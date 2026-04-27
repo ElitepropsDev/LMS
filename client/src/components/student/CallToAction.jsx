@@ -30,7 +30,7 @@ const CallToAction = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 mt-6 w-full sm:w-auto">
-            <Link to="/contact">
+            <Link to="/login">
               <button className="w-full sm:w-auto px-12 py-4 text-sky-600 bg-white font-black text-lg shadow-2xl hover:bg-sky-50 hover:-translate-y-1 transition-all duration-300">
                 Get Started for Free
               </button>
