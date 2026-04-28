@@ -39,6 +39,7 @@ import ManageUsers from "./pages/admin/ManageUsers";
 import CourseManager from "./pages/admin/CourseManager";
 import QuestionBank from "./pages/admin/QuestionBank";
 import Settings from "./pages/admin/Settings";
+import StudentProfiles from "./pages/admin/StudentProfiles";
 
 // --- SECURITY ---
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -107,6 +108,7 @@ const App = () => {
           <Route path="courses" element={<CourseManager />} />
           <Route path="exams" element={<QuestionBank />} />
           <Route path="settings" element={<Settings />} />
+          <Route path='/admin/student-profiles' element={<StudentProfiles />} />
         </Route>
 
       </Routes>

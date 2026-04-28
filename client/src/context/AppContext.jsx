@@ -9,12 +9,17 @@ export const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
     
+    
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
     const currency = import.meta.env.VITE_CURRENCY;
 
     const navigate = useNavigate();
 
+
+    
+   
+   
     // =========================
     // 🔐 AUTH STATE (JWT)
     // =========================
@@ -27,6 +32,8 @@ export const AppContextProvider = (props) => {
     const [allCourses, setAllCourses] = useState([]);
     const [userData, setUserData] = useState(null);
     const [enrolledCourses, setEnrolledCourses] = useState([]);
+
+    
 
     // =========================
     // 🔐 LOGIN / LOGOUT
@@ -62,6 +69,7 @@ export const AppContextProvider = (props) => {
         setToken(savedToken);
     }
 }, []);
+
 
     // =========================
     // 🔐 AXIOS AUTH HEADER

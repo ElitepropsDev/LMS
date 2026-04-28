@@ -1,19 +1,23 @@
 import express from 'express';
-// Combine all imports into one single line
-import { getAdminDashboardData, 
+import { 
+    getAdminDashboardData, 
     getAllStudents, 
     updateUserRole, 
     getAllCourses,  
-    deleteCourse 
+    deleteCourse,
+    addQuestion, 
+    getQuestions,
+    getStudentProfiles // <-- Imported the new function
 } from '../controllers/adminController.js';
 import authAdmin from '../middlewares/authAdmin.js'; 
-import { addQuestion, getQuestions } from '../controllers/adminController.js';
-
 
 const adminRouter = express.Router();
 
 // Dashboard Route
 adminRouter.get('/dashboard-data', authAdmin, getAdminDashboardData);
+
+// --- NEW: Student Profiles Route ---
+adminRouter.get('/student-profiles', authAdmin, getStudentProfiles);
 
 // Manage Students Routes
 adminRouter.get('/all-students', authAdmin, getAllStudents);

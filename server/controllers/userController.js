@@ -7,9 +7,7 @@ import stripe from "stripe";
 // Get User Data
 export const getUserData = async (req, res) => {
     try {
-
         const userId = req.user._id;
-
         const user = await User.findById(userId);
 
         if (!user) {
@@ -23,11 +21,53 @@ export const getUserData = async (req, res) => {
     }
 };
 
+// --- NEW: Update Student Profile Data ---
+export const updateStudentProfile = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const { 
+            gender, 
+            schoolName, 
+            location, 
+            track, 
+            level, 
+            examStatus, 
+            phoneNumber 
+        } = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+                gender,
+                schoolName,
+                location,
+                track,
+                level,
+                examStatus,
+                phoneNumber,
+                isProfileComplete: true // Mark profile as finished
+            },
+            { new: true } // Returns the updated document
+        );
+
+        if (!updatedUser) {
+            return res.json({ success: false, message: 'User Not Found' });
+        }
+
+        res.json({ 
+            success: true, 
+            message: 'Profile updated successfully', 
+            user: updatedUser 
+        });
+
+    } catch (error) {
+        res.json({ success: false, message: error.message });
+    }
+};
+
 // Purchase Course 
 export const purchaseCourse = async (req, res) => {
-
     try {
-
         const { courseId } = req.body;
         const { origin } = req.headers;
 
@@ -82,9 +122,7 @@ export const purchaseCourse = async (req, res) => {
 
 // Users Enrolled Courses
 export const userEnrolledCourses = async (req, res) => {
-
     try {
-
         const userId = req.user._id;
 
         const userData = await User.findById(userId)
@@ -99,17 +137,13 @@ export const userEnrolledCourses = async (req, res) => {
 
 // Update Progress
 export const updateUserCourseProgress = async (req, res) => {
-
     try {
-
         const userId = req.user._id;
-
         const { courseId, lectureId } = req.body;
 
         const progressData = await CourseProgress.findOne({ userId, courseId });
 
         if (progressData) {
-
             if (progressData.lectureCompleted.includes(lectureId)) {
                 return res.json({ success: true, message: 'Lecture Already Completed' });
             }
@@ -118,13 +152,11 @@ export const updateUserCourseProgress = async (req, res) => {
             await progressData.save();
 
         } else {
-
             await CourseProgress.create({
                 userId,
                 courseId,
                 lectureCompleted: [lectureId]
             });
-
         }
 
         res.json({ success: true, message: 'Progress Updated' });
@@ -136,11 +168,8 @@ export const updateUserCourseProgress = async (req, res) => {
 
 // Get Progress
 export const getUserCourseProgress = async (req, res) => {
-
     try {
-
         const userId = req.user._id;
-
         const { courseId } = req.body;
 
         const progressData = await CourseProgress.findOne({ userId, courseId });
@@ -154,7 +183,6 @@ export const getUserCourseProgress = async (req, res) => {
 
 // Rating
 export const addUserRating = async (req, res) => {
-
     const userId = req.user._id;
     const { courseId, rating } = req.body;
 
@@ -163,7 +191,6 @@ export const addUserRating = async (req, res) => {
     }
 
     try {
-
         const course = await Course.findById(courseId);
 
         if (!course) {

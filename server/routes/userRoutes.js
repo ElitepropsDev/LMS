@@ -5,7 +5,8 @@ import {
     getUserData,
     purchaseCourse,
     updateUserCourseProgress,
-    userEnrolledCourses
+    userEnrolledCourses,
+    updateStudentProfile // <-- Newly imported
 } from "../controllers/userController.js";
 
 import { protect } from "../middlewares/authMiddleware.js";
@@ -17,6 +18,9 @@ userRouter.use(protect);
 
 // USER ROUTES
 userRouter.get("/data", getUserData);
+
+// --- NEW: Route for updating student profile ---
+userRouter.post("/update-profile", updateStudentProfile); 
 
 userRouter.post("/purchase", purchaseCourse);
 

@@ -1,8 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { navigate, logoutUser } = useContext(AppContext);
+  const { backendUrl, token, setUserData } = useContext(AppContext);
+  
 
   // Existing States
   const [activeTab, setActiveTab] = useState("courses");
@@ -82,6 +86,73 @@ const Dashboard = () => {
     return matchCat && matchDiff && matchDur;
   });
 
+  useEffect(() => {
+    const checkProfileStatus = async () => {
+        try {
+            // Updated URL to match your user profile endpoint
+            const { data } = await axios.get(backendUrl + '/api/user/get-profile', { headers: { token } });
+            
+            if (data.success) {
+                // If the user has a name or track in the DB, lock the button
+                if (data.userData?.fullName || data.userData?.track) {
+                    setIsProfileComplete(true);
+                    // This fills the form with their data so they can see it
+                    setFormData(data.userData); 
+                }
+            }
+        } catch (error) {
+            console.error("Error checking profile status", error);
+        }
+    };
+
+    if (token) {
+        checkProfileStatus();
+    }
+}, [token, backendUrl]);
+
+
+  // Initialize form state
+  const [formData, setFormData] = useState({
+    fullName: "",
+    gender: "",
+    schoolName: "",
+    location: "",
+    track: "",
+    level: "",
+    examStatus: "",
+    phoneNumber: "",
+  });
+
+  // Handle input changes
+  const onChangeHandler = (e) => {
+    setFormData((data) => ({ ...data, [e.target.name]: e.target.value }));
+  };
+
+  // Handle Form Submission
+ const handleSubmit = async () => {
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/user/update-profile",
+        formData,
+        { headers: { token } },
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        // LOCK THE BUTTON IMMEDIATELY
+        setIsProfileComplete(true); 
+        setIsDrawerOpen(false);
+        
+        if (setUserData) {
+            setUserData(data.user);
+        }
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+};
   return (
     <div className="relative flex flex-col md:flex-row min-h-screen bg-slate-50">
       {/* 1. Sidebar */}
@@ -281,7 +352,7 @@ const Dashboard = () => {
                     <div className="space-y-2">
                       {/* 1. THE EXTERNAL LINK */}
                       <a
-                        href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform"
+                        href="https://forms.gle/dtRwLFqu4tZMBxwN7"
                         target="_blank"
                         rel="noreferrer"
                         className="block w-full py-2 text-center border-2 border-blue-500 text-blue-500 font-black text-[10px] uppercase tracking-tighter hover:bg-blue-600 hover:text-white transition-all"
@@ -664,7 +735,6 @@ const Dashboard = () => {
       {/* --- SLIDE-OVER DRAWER COMPONENT --- */}
       {isDrawerOpen && (
         <div className="fixed inset-0 z-[999] overflow-hidden">
-          {/* Backdrop with a softer blue-tinted blur */}
           <div
             className="absolute inset-0 bg-blue-900/40 backdrop-blur-md transition-opacity"
             onClick={() => setIsDrawerOpen(false)}
@@ -672,9 +742,8 @@ const Dashboard = () => {
 
           <div className="fixed inset-0 flex items-center justify-center p-4">
             <div className="w-screen max-w-md">
-              {/* Main Card: Blue border-t, rounded, and white bg */}
-              <div className="flex flex-col bg-white shadow-2xl shadow-blue-200 rounded-3xl border-t-8 border-blue-500 animate-fadeIn overflow-hidden">
-                {/* Header: Sky 50 background */}
+              <div className="flex flex-col bg-white shadow-2xl shadow-blue-200 rounded-3xl border-t-8 border-blue-500 animate-fadeIn overflow-hidden max-h-[90vh]">
+                {/* Header */}
                 <div className="p-8 bg-sky-50 border-b border-blue-100">
                   <div className="flex items-center justify-between">
                     <div>
@@ -694,21 +763,31 @@ const Dashboard = () => {
 
                 {/* Form Body */}
                 <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-white">
+                  {/* Personal Section */}
                   <div className="space-y-4">
                     <label className="block text-[10px] font-black uppercase text-blue-500 tracking-widest ml-1">
-                      Academic Info
+                      Personal Information
                     </label>
                     <input
                       type="text"
-                      placeholder="School / College Name"
+                      name="fullName"
+                      onChange={onChangeHandler}
+                      value={formData.fullName}
+                      placeholder="Full Name"
+                      required
                       className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
                     />
                     <div className="relative">
-                      <select className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all">
-                        <option>Select Grade / Level</option>
-                        <option>SSS 1</option>
-                        <option>SSS 2</option>
-                        <option>SSS 3</option>
+                      <select
+                        name="gender"
+                        onChange={onChangeHandler}
+                        value={formData.gender}
+                        required
+                        className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all"
+                      >
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">
                         ↓
@@ -716,18 +795,105 @@ const Dashboard = () => {
                     </div>
                   </div>
 
+                  {/* School Section */}
                   <div className="space-y-4 pt-6 border-t border-blue-50">
-                    <label className="block text-[10px] font-black uppercase text-blue-400 tracking-widest ml-1">
-                      Guardian / Parent Contact
+                    <label className="block text-[10px] font-black uppercase text-blue-500 tracking-widest ml-1">
+                      School Information
                     </label>
                     <input
                       type="text"
-                      placeholder="Guardian Full Name"
+                      name="schoolName"
+                      onChange={onChangeHandler}
+                      value={formData.schoolName}
+                      placeholder="School Name (or last school)"
+                      required
                       className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
                     />
                     <input
                       type="text"
-                      placeholder="WhatsApp / Phone Number"
+                      name="location"
+                      onChange={onChangeHandler}
+                      value={formData.location}
+                      placeholder="Location (State/City)"
+                      required
+                      className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
+                    />
+                  </div>
+
+                  {/* Academic Section */}
+                  <div className="space-y-4 pt-6 border-t border-blue-50">
+                    <label className="block text-[10px] font-black uppercase text-blue-500 tracking-widest ml-1">
+                      Academic Details
+                    </label>
+
+                    <div className="relative">
+                      <select
+                        name="track"
+                        onChange={onChangeHandler}
+                        value={formData.track}
+                        required
+                        className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all"
+                      >
+                        <option value="">Select Track</option>
+                        <option value="science">Science</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="arts">Arts</option>
+                        <option value="not-sure">Not sure</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">
+                        ↓
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <select
+                        name="level"
+                        onChange={onChangeHandler}
+                        value={formData.level}
+                        required
+                        className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all"
+                      >
+                        <option value="">Select Level</option>
+                        <option value="SS2">SS2</option>
+                        <option value="SS3">SS3</option>
+                        <option value="graduated">Graduated</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">
+                        ↓
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <select
+                        name="examStatus"
+                        onChange={onChangeHandler}
+                        value={formData.examStatus}
+                        required
+                        className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm appearance-none text-slate-700 transition-all"
+                      >
+                        <option value="">Exam Status (WAEC/NECO/JAMB)</option>
+                        <option value="written">Written</option>
+                        <option value="in-progress">In progress</option>
+                        <option value="not-yet">Not yet</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-blue-500 font-bold">
+                        ↓
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contact Section */}
+                  <div className="space-y-4 pt-6 border-t border-blue-50">
+                    <label className="block text-[10px] font-black uppercase text-blue-400 tracking-widest ml-1">
+                      Contact (WhatsApp Preferred)
+                    </label>
+                    <input
+                      type="tel"
+                      name="phoneNumber"
+                      onChange={onChangeHandler}
+                      value={formData.phoneNumber}
+                      placeholder="Phone Number"
+                      required
                       className="w-full p-4 bg-sky-50/50 border-2 border-blue-50 rounded-xl focus:border-blue-500 focus:bg-white outline-none font-bold text-sm transition-all text-slate-700 placeholder:text-slate-300"
                     />
                   </div>
@@ -736,11 +902,7 @@ const Dashboard = () => {
                 {/* Footer Actions */}
                 <div className="p-8 bg-sky-50 border-t border-blue-100">
                   <button
-                    onClick={() => {
-                      setIsProfileComplete(true);
-                      setIsDrawerOpen(false);
-                      alert("Profile Updated! Step 1 is now complete.");
-                    }}
+                    onClick={handleSubmit}
                     className="w-full py-5 bg-blue-600 text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-200 transition-all active:scale-[0.98]"
                   >
                     Save & Complete Step 1

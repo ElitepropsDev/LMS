@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Users, BookOpen, LayoutDashboard, Database, Menu, X, Settings } from 'lucide-react';
+import { Users, BookOpen, LayoutDashboard, Database, Menu, X, Settings, Contact2 } from 'lucide-react'; // Added Contact2 icon
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +61,15 @@ const Sidebar = () => {
             className={({ isActive }) => `flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ${isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' : 'hover:bg-slate-800 text-slate-400'}`}
           >
             <Users size={20} /> Manage Students
+          </NavLink>
+
+          {/* --- NEW: Student Profiles Link --- */}
+          <NavLink 
+            to="/admin/student-profiles" 
+            onClick={closeSidebar}
+            className={({ isActive }) => `flex items-center gap-3 p-3 rounded-xl transition-all duration-200 ${isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20' : 'hover:bg-slate-800 text-slate-400'}`}
+          >
+            <Contact2 size={20} /> Student Profiles
           </NavLink>
 
           <NavLink 

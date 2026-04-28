@@ -1,16 +1,13 @@
 import User from "../models/User.js";
-// Make sure this filename matches your course model file exactly
 import Course from "../models/Course.js"; 
 import Question from "../models/Question.js";
 
 export const getAdminDashboardData = async (req, res) => {
     try {
-        // Promise.all runs these queries at the same time for better performance
         const [totalStudents, totalEducators, totalCourses, recentUsers] = await Promise.all([
             User.countDocuments({ role: 'student' }),
             User.countDocuments({ role: 'educator' }),
             Course.countDocuments({}),
-            // Fetch 5 latest users but hide their passwords for security
             User.find({}).select("-password").sort({ createdAt: -1 }).limit(5) 
         ]);
 
@@ -26,6 +23,21 @@ export const getAdminDashboardData = async (req, res) => {
 
     } catch (error) {
         console.error("Admin Dashboard Error:", error);
+        res.json({ success: false, message: error.message });
+    }
+};
+
+// --- NEW: Get Detailed Student Profiles ---
+export const getStudentProfiles = async (req, res) => {
+    try {
+        // Fetches only students who marked their profile as complete
+        const profiles = await User.find({ 
+            role: 'student', 
+            isProfileComplete: true 
+        }).select('-password').sort({ updatedAt: -1 });
+
+        res.json({ success: true, profiles });
+    } catch (error) {
         res.json({ success: false, message: error.message });
     }
 };
@@ -57,9 +69,7 @@ export const getQuestions = async (req, res) => {
 // Get all students for the "Manage Students" page
 export const getAllStudents = async (req, res) => {
     try {
-        // Find all users with role 'student', hide passwords, sort by newest
         const students = await User.find({ role: 'student' }).select('-password').sort({ createdAt: -1 });
-        
         res.json({ success: true, students });
     } catch (error) {
         console.error(error);
@@ -71,19 +81,17 @@ export const getAllStudents = async (req, res) => {
 export const updateUserRole = async (req, res) => {
     try {
         const { userId, newRole } = req.body;
-        
         await User.findByIdAndUpdate(userId, { role: newRole });
-        
         res.json({ success: true, message: `User role updated to ${newRole}` });
     } catch (error) {
         console.error(error);
         res.json({ success: false, message: error.message });
     }
 };
+
 // Get all courses with Educator details
 export const getAllCourses = async (req, res) => {
     try {
-        // We use .populate('educator') to get the teacher's name/email instead of just their ID
         const courses = await Course.find({})
             .populate('educator', 'name email')
             .sort({ createdAt: -1 });
