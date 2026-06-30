@@ -24,8 +24,8 @@ const Home = () => {
       <UpcomingSessions />
       <OfflineFeatures />
       <ProgressTracking />
-      <PricingTrust />
-      <TestimonialsSection />
+      {/* <PricingTrust />
+      <TestimonialsSection /> */}
       <CallToAction />
       <Footer />
     </div>

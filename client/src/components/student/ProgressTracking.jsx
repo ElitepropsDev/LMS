@@ -82,10 +82,10 @@ const ProgressTracking = () => {
         {/* Right Side: Text */}
         <div className="w-full md:w-1/2 order-1 md:order-2 text-center md:text-left">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-            Keep Parents<span className="text-blue-600"> Updated.</span>
+            Stay On Top of <span className="text-blue-600"> Your Goals.</span>
           </h2>
           <p className="text-gray-500 mt-6 text-lg leading-relaxed">
-            Learning is a shared journey — parents can track student progress in real time.
+            Learning is a continuous journey—track your growth, hit milestones, and see your progress in real time.
           </p>
 
           <ul className="mt-8 space-y-4 text-left inline-block md:block">
