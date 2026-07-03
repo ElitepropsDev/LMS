@@ -43,17 +43,19 @@ import StudentProfiles from "./pages/admin/StudentProfiles";
 
 // --- SECURITY ---
 import ProtectedRoute from "./components/ProtectedRoute";
+import PistonCrank from "./pages/landingPage/PistonCrank";
 
 const App = () => {
   const isEducatorRoute = useMatch("/educator/*");
   const isAdminRoute = useMatch("/admin/*");
+  const isLandingPage = useMatch("/pistoncrank");
 
   return (
     <div className="text-default min-h-screen bg-white">
       <ToastContainer />
 
-      {/* Hide Student Navbar if we are in Educator or Admin panels */}
-      {!isEducatorRoute && !isAdminRoute && <Navbar />}
+      {/* Hide Student Navbar if we are in Educator, Admin panels, or PistonCrank landing page */}
+{!isEducatorRoute && !isAdminRoute && !isLandingPage && <Navbar />} 
 
       <Routes>
         {/* ==========================================
@@ -72,6 +74,10 @@ const App = () => {
         <Route path="/jambexam" element={<JambExam />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+
+        {/* landingPage */}
+        <Route path="/pistoncrank" element={<PistonCrank />} />
+
 
         {/* ==========================================
             🔐 PROTECTED STUDENT ROUTES
