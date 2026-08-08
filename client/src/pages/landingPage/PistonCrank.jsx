@@ -6,6 +6,7 @@ import ActionSection from '../../components/pistonCrank/ActionSection'
 import CurriculumSection from '../../components/pistonCrank/CurriculumSection'
 import TrustSection from '../../components/pistonCrank/TrustSection'
 import FaqSection from '../../components/pistonCrank/FaqSection'
+import Footer from '../../components/pistonCrank/Footer'
 
 const PistonCrank = () => {
   return (
@@ -28,11 +29,12 @@ const PistonCrank = () => {
       <div className="relative z-10">
         <HeaderSection />
         <HeroSection />
-        <PitchSection />
         <CurriculumSection />
+        {/* <PitchSection /> */}
         <TrustSection />
         <FaqSection />
         <ActionSection />
+        <Footer />
       </div>
     </div>
   )

@@ -5,9 +5,11 @@ export default function ActionSection() {
   const [formData, setFormData] = useState({
     fullName: '',
     whatsappNumber: '',
+    email: '',
+    city: '',
+    location: '',
     educationLevel: '',
-    tradeInterest: '',
-    location: ''
+    tradeInterest: ''
   });
 
   const handleInputChange = (e) => {
@@ -15,21 +17,24 @@ export default function ActionSection() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  // 1. UPDATED STUDENT WHATSAPP ROUTE (OPTION A)
+  // STUDENT WHATSAPP ROUTE (PRESERVED)
   const handleStudentSubmit = (e) => {
     e.preventDefault();
     
     const message = `*New Student Application Profile* 🚀\n\n` +
       `👤 *Name:* ${formData.fullName}\n` +
       `📞 *WhatsApp:* ${formData.whatsappNumber}\n` +
+      `📧 *Email:* ${formData.email}\n` +
+      `🏙️ *City:* ${formData.city}\n` +
+      `📍 *Area/Address:* ${formData.location}\n` +
       `🎓 *Education:* ${formData.educationLevel}\n` +
-      `🛠️ *Trade Interest:* ${formData.tradeInterest}\n` +
-      `📍 *Location:* ${formData.location}`;
+      `🛠️ *Trade Interest:* ${formData.tradeInterest}`;
 
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/2349166354181?text=${encodedMessage}`, '_blank');
   };
 
+  // WORKSHOP PARTNER REDIRECT (PRESERVED)
   const handleWorkshopRedirect = () => {
     const message = encodeURIComponent("Hello PistonCrank, I am a workshop/garage owner and I would love to partner with you.");
     window.open(`https://wa.me/2349166354181?text=${message}`, '_blank');
@@ -51,13 +56,13 @@ export default function ActionSection() {
       <div className="max-w-xl mx-auto relative z-10 space-y-12">
         <div className="text-center space-y-3">
           <span className="text-xs font-bold tracking-widest text-pink-400 uppercase bg-pink-500/10 border border-pink-500/20 px-3 py-1 rounded-full">
-            Take Action
+            Interested?
           </span>
           <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight">
-            Select Your Pathway
+            Apply For Program Details
           </h2>
           <p className="text-slate-400 text-sm">
-            Are you looking to master a trade, or do you run an existing facility?
+            Fill out the form below and we will contact you with the detailed program info.
           </p>
         </div>
 
@@ -67,17 +72,18 @@ export default function ActionSection() {
               onClick={() => setShowForm(true)}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-indigo-600 text-white font-bold text-sm tracking-wide shadow-lg shadow-pink-600/20 hover:scale-[1.01] active:scale-[0.99] transition-all uppercase"
             >
-              🚀 I want to master a TechTrade
+              🚀 Apply Now to Master a TechTrade
             </button>
           )}
 
           {showForm && (
             <form onSubmit={handleStudentSubmit} className="backdrop-blur-md bg-slate-900/40 border border-white/10 p-6 sm:p-8 rounded-2xl space-y-5 shadow-2xl">
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                <h3 className="text-sm font-bold tracking-wide uppercase text-pink-400">Student Interest Profile</h3>
+                <h3 className="text-sm font-bold tracking-wide uppercase text-pink-400">Student Application Form</h3>
                 <button type="button" onClick={() => setShowForm(false)} className="text-xs text-slate-400 hover:text-white">Cancel</button>
               </div>
 
+              {/* FULL NAME */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
                 <input 
@@ -87,6 +93,7 @@ export default function ActionSection() {
                 />
               </div>
 
+              {/* WHATSAPP NUMBER */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">WhatsApp Phone Number</label>
                 <input 
@@ -96,41 +103,63 @@ export default function ActionSection() {
                 />
               </div>
 
+              {/* EMAIL ADDRESS */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Email Address</label>
+                <input 
+                  type="email" name="email" required value={formData.email} onChange={handleInputChange}
+                  placeholder="john@example.com"
+                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition-colors"
+                />
+              </div>
+
+              {/* CITY DROPDOWN */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">City</label>
+                <select name="city" required value={formData.city} onChange={handleInputChange}
+                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-pink-500 transition-colors"
+                >
+                  <option value="" disabled>Select City</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Abuja">Abuja</option>
+                </select>
+              </div>
+
+              {/* WHERE DO YOU LIVE? */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Where do you live?</label>
+                <input 
+                  type="text" name="location" required value={formData.location} onChange={handleInputChange}
+                  placeholder="e.g., Gbagada, Ikeja, Jahi"
+                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition-colors"
+                />
+              </div>
+
+              {/* HIGHEST EDUCATION LEVEL */}
               <div>
                 <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Highest Education Level</label>
                 <select name="educationLevel" required value={formData.educationLevel} onChange={handleInputChange}
                   className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-pink-500 transition-colors"
                 >
                   <option value="" disabled>Select Education Level</option>
-                  <option value="SSCE (Science)">SSCE (Science)</option>
-                  <option value="SSCE (Arts / Commercial)">SSCE (Arts / Commercial)</option>
-                  <option value="OND / HND / (Science/Tech)">OND / HND / (Science/Tech)</option>
-                  <option value="OND / HND / (Arts/Commercial)">OND / HND / (Arts/Commercial)</option>
-                  <option value="University Grad (Science/Eng.)">University Grad (Science/Eng.)</option>
-                  <option value="University Grad (Art/Social Science)">University Grad (Art/Social Science)</option>
+                  <option value="University Graduate">University Graduate</option>
+                  <option value="Secondary School">Secondary School</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
 
+              {/* COURSE INTERESTED IN */}
               <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Trade / Course of Interest</label>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Course Interested In</label>
                 <select name="tradeInterest" required value={formData.tradeInterest} onChange={handleInputChange}
                   className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-slate-300 focus:outline-none focus:border-pink-500 transition-colors"
                 >
                   <option value="" disabled>Select a Course</option>
-                  <option value="Automotive Service & Maintenance">Automotive Service & Maintenance</option>
-                  <option value="Automotive Air Conditioning Service & Maintenance">Automotive Air Conditioning Service & Maintenance</option>
-                  <option value="Residential Air Conditioning Service & Maintenance">Residential Air Conditioning Service & Maintenance</option>
-                  <option value="Others">Others</option>
+                  <option value="Auto Diagnostics">Auto Diagnostics</option>
+                  <option value="Auto Preventive Maintenance">Auto Preventive Maintenance</option>
+                  <option value="Auto Painting">Auto Painting</option>
+                  <option value="Residential AC & Fridge Maintenance">Residential AC & Fridge Maintenance</option>
                 </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Location</label>
-                <input 
-                  type="text" name="location" required value={formData.location} onChange={handleInputChange}
-                  placeholder="e.g., Surulere, Lekki"
-                  className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-pink-500 transition-colors"
-                />
               </div>
 
               <button 

@@ -2,8 +2,31 @@ import React from "react";
 import heroImg from "../../assets/hero.png";
 
 export default function HeroSection({ onStudentClick }) {
+  const advantages = [
+    {
+      title: "Quick to Commercialize",
+      desc: "In two to three months, you develop your skills rapidly to the point where you can manage certain defined tasks on your own, allowing you to apply skills.",
+    },
+    {
+      title: "Structured Learning",
+      desc: "This saves learning time and is more effective learning than unstructured roadside models, because we set clear direct objectives and predetermined results. Ideal for all educational levels.",
+    },
+    {
+      title: "Low Startup Costs",
+      desc: "In this niche, you can usually easily get by and start something without any costly equipment or substantial start-up capital.",
+    },
+    {
+      title: "Low Competition",
+      desc: "Compared to competitive digital areas, physical technological trades have a higher barrier to entrance, which immediately keeps your services very relevant.",
+    },
+    {
+      title: "Recession Proof",
+      desc: "There are cars and air conditioners everywhere. Maintaining them is as essential as recharging a phone, even in hard times. These useful skills also translate well to other high-margin industries.",
+    },
+  ];
+
   return (
-    <section className="relative bg-slate-950 text-white pt-28 pb-16 lg:pt-32 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center">
+    <section className="relative bg-slate-950 text-white pt-28 pb-16 lg:pt-32 lg:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex flex-col justify-center">
       {/* BACKGROUND RADIANT NEON GLOWS */}
       <div
         className="absolute inset-0 pointer-events-none opacity-40 mix-blend-screen"
@@ -21,28 +44,25 @@ export default function HeroSection({ onStudentClick }) {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
             <span className="text-[11px] font-medium tracking-wider uppercase text-slate-300">
-              Guaranteed Earning Loop
+              Hands-On Trade Placement
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] lg:leading-[1.05] uppercase bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-slate-400">
-            Guaranteed Earning <br />
-            In as Little as <br />
+            Learn a <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
-              3 Weeks
+              High-Utility
             </span>{" "}
-            From A <br />
-            Specialist Technical Trade.
+            <br />
+            Technical Trade.
           </h1>
 
           <div className="space-y-3 max-w-xl mx-auto lg:mx-0">
             <p className="text-xs sm:text-sm font-bold tracking-widest text-purple-400 uppercase">
-              Your educational background doesn’t matter
+              Auto Diagnostics | Preventive Maintenance | Auto Painting | AC & Fridge
             </p>
             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-              Stop wasting years in rigid classrooms or unstructured loops.
-              Master a high-income, low-footprint skill built directly for local
-              market demands.
+              Supervised, hands-on practice through placement. Your educational background does not matter.
             </p>
           </div>
 
@@ -58,7 +78,6 @@ export default function HeroSection({ onStudentClick }) {
         </div>
 
         {/* RIGHT COLUMN: HIGH-END HUD GRAPHIC WITH RAW HERO IMAGE */}
-       
         <div className="lg:col-span-5 flex flex-col items-center space-y-4 w-full">
           <div className="relative w-full aspect-[4/5] sm:max-w-md lg:max-w-none rounded-3xl overflow-hidden border border-white/10 bg-slate-900 shadow-2xl p-6 flex flex-col justify-between">
             <img
@@ -100,26 +119,43 @@ export default function HeroSection({ onStudentClick }) {
             </div>
           </div>
 
-          {/* TEXT MOVED OUTSIDE BELOW THE IMAGE */}
+          {/* TEXT BELOW THE IMAGE */}
           <div className="w-full sm:max-w-md lg:max-w-none text-center lg:text-left space-y-1 px-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-pink-400">
               Target Framework
             </span>
             <p className="text-xs text-slate-400 leading-normal">
-              High-income diagnostic mastery for modern automotive engines,
-              vehicle cooling electronics, and smart climate grids.
+              Job-ready technical skills across auto diagnostics, preventive care, bodywork, and air conditioning servicing.
             </p>
           </div>
 
           {/* WHITE OUTLINED LEARN MORE BUTTON */}
           <div className="w-full flex justify-center pt-2">
             <a
-              href="#problem"
+              href="#advantages"
               className="px-8 py-3.5 max-w-xs w-full text-center rounded-xl bg-white/5 border border-white/20 text-white font-bold text-sm tracking-wide hover:bg-white/10 hover:border-white/40 active:scale-[0.98] transition-all uppercase"
             >
               Learn More ↓
             </a>
           </div>
+        </div>
+      </div>
+
+      {/* ADVANTAGES GRID */}
+      <div id="advantages" className="max-w-6xl mx-auto w-full mt-16 relative z-10 pt-10 border-t border-white/10">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-6 text-center lg:text-left">
+          Advantages
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {advantages.map((adv, index) => (
+            <div
+              key={index}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm flex flex-col justify-start hover:border-purple-500/40 transition-colors"
+            >
+              <h3 className="text-base font-bold text-white mb-2">{adv.title}</h3>
+              <p className="text-xs text-slate-400 leading-relaxed">{adv.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

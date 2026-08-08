@@ -3,24 +3,43 @@ import React from 'react';
 export default function CurriculumSection() {
   const tracks = [
     {
-      title: "Automotive Service & Maintenance",
+      title: "Auto Diagnostics",
       badge: "Core Track",
-      features: ["Diagnostic Scan Tablets", "Engine mechanical overhauls", "Routine fluid & system servicing"]
+      features: [
+        "Use a computer or smart gadget to detect auto faults",
+        "Vehicle computer resets and system diagnostics"
+      ]
     },
     {
-      title: "Automotive AC Service & Maintenance",
+      title: "Preventive Maintenance",
+      badge: "High Utility",
+      features: [
+        "Fluid management & routine oil servicing",
+        "Simple parts replacement (fuses, bulbs, pads)",
+        "Focused practical tasks—no heavy overhauls"
+      ]
+    },
+    {
+      title: "Car Painting",
       badge: "Specialist",
-      features: ["Refrigerant recharge loops", "Compressor fault detection", "Climate electrical circuits"]
+      features: [
+        "Surface preparation & filler application",
+        "Sanding sequences & precise masking",
+        "Skills transfer directly to high-end interior & furniture coatings"
+      ]
     },
     {
-      title: "Residential AC Service & Maintenance",
+      title: "Residential AC & Fridge Maintenance",
       badge: "High Demand",
-      features: ["Split unit installations", "Industrial fault isolation", "Domestic gas management"]
+      features: [
+        "Routine maintenance & full system servicing",
+        "Finding gas leaks & executing gas refills"
+      ]
     }
   ];
 
   return (
-    <section className="relative bg-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section section id="curriculum" className="relative bg-slate-950 text-white py-10 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       
       {/* FORCE-INJECTED RADIAL BACKGROUND GRADIENT FOR THE GLOW EFFECT */}
       <div 
@@ -33,21 +52,21 @@ export default function CurriculumSection() {
         }}
       />
 
-      <div className="max-w-5xl mx-auto relative z-10 space-y-12">
+      <div className="max-w-6xl mx-auto relative z-10 space-y-12">
         
         <div className="text-center space-y-3">
           <span className="text-xs font-bold tracking-widest text-pink-400 uppercase bg-pink-500/10 border border-pink-500/20 px-3 py-1 rounded-full">
-            Available Programs
+            Featured Courses
           </span>
           <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight">
             Specialized Technical Trades
           </h2>
           <p className="text-slate-400 text-sm max-w-xl mx-auto">
-            Select a streamlined, modern pathway designed to bypass traditional roadside loops and get you earning rapidly.
+            Select a structured, practical pathway designed to build targeted skills and expand your commercial capacity.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {tracks.map((track, idx) => (
             <div 
               key={idx} 
@@ -59,14 +78,14 @@ export default function CurriculumSection() {
                     {track.badge}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold uppercase tracking-wide text-white leading-tight">
+                <h3 className="text-base font-bold uppercase tracking-wide text-white leading-tight">
                   {track.title}
                 </h3>
                 <ul className="space-y-2 pt-2">
                   {track.features.map((feat, fIdx) => (
-                    <li key={fIdx} className="text-xs text-slate-400 flex items-center gap-2">
-                      <span className="w-1 h-1 rounded-full bg-pink-400" />
-                      {feat}
+                    <li key={fIdx} className="text-xs text-slate-400 flex items-start gap-2 leading-snug">
+                      <span className="w-1.5 h-1.5 rounded-full bg-pink-400 shrink-0 mt-1" />
+                      <span>{feat}</span>
                     </li>
                   ))}
                 </ul>

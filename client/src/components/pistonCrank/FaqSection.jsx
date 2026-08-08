@@ -4,22 +4,49 @@ export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const faqs = [
+    // AUTO DIAGNOSTICS (2 Questions)
     {
-      q: "Do I need to buy expensive tools or diagnostic gadgets?",
-      a: "No. Excel TechTrade is structured specifically to be low-footprint. You do not need to purchase any expensive gear, machinery, or heavy tools to independently master and practice these specialized modules."
+      q: "Do I need to own an expensive diagnostic scanner for Auto Diagnostics?",
+      a: "No. You will learn using diagnostic gadgets and computers during training. You do not need to buy costly equipment upfront to get started."
     },
     {
-      q: "Can I really start earning in as little as 3 weeks?",
-      a: "Yes. Our curriculum cuts out the standard roadside errand-running loops and rigid academic theory. We focus entirely on high-demand, specialized diagnostic execution so you can partner or offer services immediately."
+      q: "Will I learn how to perform vehicle computer resets?",
+      a: "Yes. The Auto Diagnostics module covers using smart gadgets to detect vehicle faults as well as executing complete computer resets."
+    },
+
+    // PREVENTIVE MAINTENANCE (2 Questions)
+    {
+      q: "Does Preventive Maintenance cover heavy engine overhauls?",
+      a: "No. This module focuses strictly on high-frequency, quick-turnaround services like fluid management, oil servicing, and replacing simple parts (fuses, bulbs, pads)."
     },
     {
-      q: "Does my educational background matter?",
-      a: "Not at all. Whether you have an SSCE (Arts or Science), an OND/HND, a University Degree, or no formal background, our structured framework is built to guide you completely from scratch."
+      q: "Is Preventive Maintenance easy to commercialize quickly?",
+      a: "Yes. Because these are routine services every vehicle needs regularly, you can begin offering basic maintenance tasks shortly after training."
+    },
+
+    // CAR PAINTING (2 Questions)
+    {
+      q: "What specific painting skills are covered in the training?",
+      a: "You will master essential surface preparation, filler application, proper sanding sequences, and precise masking for professional finishes."
+    },
+    {
+      q: "Can Car Painting skills be applied to other industries?",
+      a: "Directly, yes. The surface prep, sanding, and coating techniques transfer smoothly into high-end interior finishing and custom furniture painting."
+    },
+
+    // RESIDENTIAL AC & FRIDGE (2 Questions)
+    {
+      q: "Will I learn how to detect and refill gas leaks in AC units?",
+      a: "Yes. The Residential AC & Fridge module explicitly covers routine servicing, finding gas leaks, and properly refilling system gas."
+    },
+    {
+      q: "Do I need an engineering degree to learn AC and fridge repair?",
+      a: "Not at all. Your educational background does not matter; the training is fully practical and structured for all learning levels."
     }
   ];
 
   return (
-    <section className="relative bg-slate-950 text-white py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5">
+    <section section id="faq" className="relative bg-slate-950 text-white py-10 px-4 sm:px-6 lg:px-8 border-t border-white/5">
       <div className="max-w-3xl mx-auto relative z-10 space-y-12">
         
         {/* SECTION HEADER */}
@@ -45,7 +72,7 @@ export default function FaqSection() {
                   onClick={() => setActiveIndex(isOpen ? null : idx)}
                   className="w-full p-5 text-left flex justify-between items-center gap-4 hover:bg-white/[0.02] transition-colors focus:outline-none"
                 >
-                  <span className="font-bold text-sm sm:text-base uppercase tracking-wide text-slate-200">
+                  <span className="font-semibold text-sm sm:text-base tracking-wide text-slate-200">
                     {faq.q}
                   </span>
                   <span className={`text-purple-400 text-lg transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
@@ -54,7 +81,7 @@ export default function FaqSection() {
                 </button>
                 
                 <div 
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-40 border-t border-white/5' : 'max-h-0'}`}
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? 'max-h-60 border-t border-white/5' : 'max-h-0'}`}
                 >
                   <p className="p-5 text-sm text-slate-400 leading-relaxed bg-slate-900/20">
                     {faq.a}
