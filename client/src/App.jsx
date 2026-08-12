@@ -76,7 +76,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
 
         {/* landingPage */}
-        <Route path="/pistoncrank" element={<PistonCrank />} />
+        {/* <Route path="/pistoncrank" element={<PistonCrank />} /> */}
 
 
         {/* ==========================================
